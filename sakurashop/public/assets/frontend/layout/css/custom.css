@@ -1,0 +1,214 @@
+/** {
+font-family: Verdana,Geneva,sans-serif !important;
+}*/
+/* here you can put your own css to customize and override the theme */
+.panel{
+    background: #f2f2f4;
+}
+.btn-add-to-class{
+    font-weight: bold;
+    font-size:  !important;
+}
+.select-sm{
+    width: 180px;
+}
+.cart-tutorial{
+    font-size: small;
+    text-transform: uppercase;
+    /*margin-top: 5px;*/
+}
+.btn-larger{
+    width: 150px;
+    height: 50px;
+}
+.required{
+    color: #ff0000;
+}
+.product-page-content .datasheet td:nth-child(2){
+    font-weight: bold;
+    color: #F09;
+    text-transform: capitalize;
+}
+.show-sale-price{
+    color: #000000 !important;
+}
+#content-checkout-total .control-label {
+    font-weight: bold;
+}
+#content-checkout-total .checkout-summary-info {
+    font-weight: bold;
+    margin: 0 !important;
+}
+#wrapper-top-search
+{
+    background: url("/images/serach-bg.png") no-repeat;
+    display: inline-block;
+    float: right;
+    margin: 5px 0px;
+    padding: 4px 12px;
+}
+.text
+{
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #D7135B;
+}
+.search
+{
+    background: url("/images/search-icon.png") no-repeat transparent 0 3px;
+    border: 0 none;
+    cursor: pointer;
+    height: 13px;
+    width: 10px;
+}
+#wrapper-content
+{
+    margin: 10px auto;
+    width: 1020px;
+}
+.additional-shop-info p{
+    color: #000000;
+}
+.additional-nav ul li a{
+    color: #000;
+}
+.nav-bar{
+    background-color: #fdaecb;
+    margin-top: -3px;
+}
+.ecommerce .header-navigation{
+
+}
+.header .top-cart-block{
+    margin-top: 10px;
+}
+.header-navigation > ul > li{
+    height: 47px;
+}
+.ecommerce .header-navigation > ul > li > a{
+    padding: 15px 12px 15px;
+}
+.footer-about {
+    background-color: #feb0ca;
+}
+.pre-footer-light .container{
+    background: #feb0ca;
+    padding-top: 0px;
+}
+.footer-about {
+    background:#f7f0ee;
+    padding: 0 0 0 30px;
+    color:#393232;
+    margin-bottom:15px;
+}
+.footer-about h1{
+    display: hidden;
+}
+.footer-about .text {
+    /*padding-right:30px;*/
+    padding-top: 30px;
+    float:left;
+    line-height:19px;
+    font-size: 16px;
+    font-family: Verdana,Geneva,sans-serif;
+    color: #ffffff;
+}
+.footer-about .text h1 {
+    display: none;
+    color:#ffffff;
+    text-transform:uppercase;
+    font-size:22px;
+    margin-bottom:15px;
+}
+.footer-about .text .contact{
+    font-size: 16px;
+    font-family: Verdana,Geneva,sans-serif;
+    color: #ffffff;
+    padding-bottom: 15px;
+}
+.pre-footer .pre-footer-subscribe-box{
+    padding-bottom: 0;
+}
+.no-padding-right{
+    padding-right: 0;
+    margin-right: 0;
+}
+.pi-price{
+    font-weight: bold;
+    color: #EF377B;
+    font-family: Verdana, Arial, sans-serif !important;
+    font-size: 13px;
+    text-transform: none;
+    background-color: #f5f1f0;
+    margin-top: -10px;
+}
+.name-product{
+    color: #000000;
+    font-family: Verdana,Geneva,sans-serif !important;
+    font-size: 13px;
+}
+.list-group-item h4{
+    color: #EF377B;
+    font-family: Verdana, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+.title-main{
+    color: #EF377B;
+    font-family: Verdana, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+.pre-footer .pre-footer-subscribe-box{
+    margin-right: -17px;
+}
+.name-product{
+    text-transform: capitalize;
+}
+.pre-footer-light{
+    margin-top: -35px;
+}
+.btn-checkout{
+    font-weight: bold;
+    font-size: 15px;
+}
+.special-price{
+    color: green;
+}
+.new-product{
+    padding: 20px 2px 6px 20px !important;
+    margin: 0 auto !important;
+}
+.product-box-info {
+    min-height: 48px !important;
+}
+.body-panel{
+    background-color: #fff !important;
+}
+.g-background{
+   background-color: #fcf6e8;
+}
+.header{
+    margin-bottom: 0;
+}
+.gray-background{
+    background-color: #F5F5F5;
+}
+.ecommerce .sidebar .category-item{
+    background-color: #fcf6e8;
+}
+.product-page-content .datasheet td {
+    padding: 5px 20px 13px 0 !important;
+    text-transform: capitalize;
+}
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus{
+    background-color: #EF377B !important;
+}
+.additional-shop-info p{
+    font-family: Verdana,Geneva,sans-serif !important;
+}
+
+.additional-nav a{
+font-family: Verdana,Geneva,sans-serif !important;
+font-size: 12px;
+}
