@@ -58,7 +58,7 @@ return array(
 			
 			'database'  => 'hanhtri_sakuravn',
 			'username'  => 'hanhtri_sakura',
-			'password'  => 'ph@itu311',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
