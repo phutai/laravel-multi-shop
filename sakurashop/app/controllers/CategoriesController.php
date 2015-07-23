@@ -53,6 +53,9 @@ class CategoriesController extends BaseController
 
     public function importData()
     {
+        // check execute sql success or false
+        $isSuccess = false;
+
         // get path file in page
         $pathFile = Input::get('pathFile');
         
@@ -134,13 +137,18 @@ class CategoriesController extends BaseController
                     }
                 }
                 // insert product to database
-                DB::table('products')->insert(
+                $isSuccess = DB::table('products')->insert(
                     array('name'=> $productName, 'sale_price' => $productPrice, 'special_price' => $productPrice
                         , 'image' => $productImage, 'large_image' => $productLargeImage
                         , 'description' => $productDescription, 'category_id' => $productCategory)
                 );
             }
         }
+
+        if ($isSuccess)
+            printf('success');
+        else
+            printf('false');
     }
 
 }
