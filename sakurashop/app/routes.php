@@ -14,6 +14,8 @@
 Route::get('/', 'ProductsController@index');
 Route::get('/search/{q}', ['uses' =>'SearchController@search']);
 Route::get('/gioi-thieu', ['uses' =>'PagesController@about']);
+Route::get('/importPage', 'CategoriesController@showImportPage');
+Route::post('importData', 'CategoriesController@importData');
 Route::group(array('prefix' => 'admin', 'before'=>'admin'), function () {
 
     
