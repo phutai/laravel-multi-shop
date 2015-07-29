@@ -84,15 +84,15 @@ class CategoriesController extends BaseController
 
             if (count($temp) > 0) {
                 // analyze each product to properties
-                foreach ($temp as $key => $value) {
-                    if ($key == 2) {
+                foreach ($temp as $keyData => $value) {
+                    if ($keyData == 2) {
                         // split all categories of product
                         $categories = explode('/', $value);
                         // loop all categories in product
-                        foreach ($categories as $key => $category) {
+                        foreach ($categories as $keyCatePro => $category) {
                             if (count($categoriesData) > 0) {
                                 // loop all categories in database
-                                foreach ($categoriesData as $key => $categoryData) {
+                                foreach ($categoriesData as $keyCateDB => $categoryData) {
                                     // already have this category in database
                                     if ($categoryData->name == $category) {
                                         $existCategory = 1;
@@ -102,9 +102,20 @@ class CategoriesController extends BaseController
                             }
                             // don't have this category in database -> add category to table categories
                             if ($existCategory == 0) {
-                                DB::table('categories')->insert(
-                                    array('name'=> $category)
-                                );
+                                if ($keyCatePro > 0) {
+                                    $parrentCategory = DB::table('categories')
+                                                            ->select('id')
+                                                            ->where('name', $categories[$keyCatePro - 1])
+                                                            ->first()->id;
+                                    DB::table('categories')->insert(
+                                        array('name'=> $category, 'parent_id' => $parrentCategory)
+                                    );
+                                }
+                                else {
+                                    DB::table('categories')->insert(
+                                        array('name'=> $category)
+                                    );
+                                }
                             }
                             $existCategory = 0;
                             // get id of category
@@ -116,23 +127,23 @@ class CategoriesController extends BaseController
                         }
                     }
                     // get product name of category
-                    if ($key == 3) {
+                    if ($keyData == 3) {
                         $productName = $value;
                     }
                     // get product description of category
-                    if ($key == 5) {
+                    if ($keyData == 5) {
                         $productDescription = $value;
                     }
                     // get product price of category
-                    if ($key == 6) {
+                    if ($keyData == 6) {
                         $productPrice = $value;
                     }
                     // get product large image of category
-                    if ($key == 7) {
+                    if ($keyData == 7) {
                         $productLargeImage = $value;
                     }
                     // get product image of category
-                    if ($key == 8) {
+                    if ($keyData == 8) {
                         $productImage = $value;
                     }
                 }
