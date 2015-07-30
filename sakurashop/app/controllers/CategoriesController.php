@@ -108,12 +108,15 @@ class CategoriesController extends BaseController
                                                             ->where('name', $categories[$keyCatePro - 1])
                                                             ->first()->id;
                                     DB::table('categories')->insert(
-                                        array('name'=> $category, 'parent_id' => $parrentCategory)
+                                        array('name'=> $category
+                                            , 'parent_id' => $parrentCategory
+                                            , 'alias' => CommonHelper::url_slug($category))
                                     );
                                 }
                                 else {
                                     DB::table('categories')->insert(
-                                        array('name'=> $category)
+                                        array('name'=> $category
+                                            , 'alias' => CommonHelper::url_slug($category))
                                     );
                                 }
                             }
@@ -151,8 +154,9 @@ class CategoriesController extends BaseController
                 $isSuccess = DB::table('products')->insert(
                     array('name'=> $productName, 'sale_price' => $productPrice, 'special_price' => $productPrice
                         , 'image' => $productImage, 'large_image' => $productLargeImage
-                        , 'description' => $productDescription, 'category_id' => $productCategory)
-                );
+                        , 'description' => $productDescription, 'category_id' => $productCategory
+                        , 'alias' => CommonHelper::url_slug($productName)
+                ));
             }
         }
 
