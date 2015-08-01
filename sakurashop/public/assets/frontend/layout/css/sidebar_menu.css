@@ -1,18 +1,12 @@
-@import url(http://fonts.googleapis.com/css?family=Oxygen+Mono);
 /* Please Keep this font import at the very top of any CSS file */
 @charset "UTF-8";
 /* Starter CSS for Flyout Menu */
-#cssmenu {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  line-height: 1;
-}
 #cssmenu ul,
 #cssmenu ul li,
 #cssmenu ul ul {
   list-style: none;
-  margin: 0;
+  margin-right: 0;
+  margin-left: 0;
   padding: 0;
 }
 #cssmenu ul {
@@ -41,13 +35,6 @@
   z-index: 598;
   width: 100%;
 }
-#cssmenu ul ul li {
-  float: none;
-}
-#cssmenu ul ul ul {
-  top: -2px;
-  right: 0;
-}
 #cssmenu ul li:hover > ul {
   visibility: visible;
 }
@@ -58,20 +45,7 @@
 #cssmenu ul li {
   float: none;
 }
-#cssmenu ul ul {
-  margin-top: 1px;
-}
-#cssmenu ul ul li {
-  font-weight: normal;
-}
 /* Custom CSS Styles */
-#cssmenu {
-  width: 200px;
-  background: #333333;
-  font-family: 'Oxygen Mono', Tahoma, Arial, sans-serif;
-  zoom: 1;
-  font-size: 12px;
-}
 #cssmenu:before {
   content: '';
   display: block;
@@ -85,14 +59,6 @@
   display: block;
   padding: 15px 20px;
   color: #ffffff;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-#cssmenu > ul {
-  width: 200px;
-}
-#cssmenu ul ul {
-  width: 200px;
 }
 #cssmenu > ul > li > a {
   color: #000000;
@@ -142,12 +108,6 @@
 }
 #cssmenu ul ul li:hover > a {
   background: #fcf6e8;
-}
-#cssmenu.align-right {
-  float: right;
-}
-#cssmenu.align-right li {
-  text-align: right;
 }
 #cssmenu.align-right ul li.has-sub > a:before {
   content: '+';

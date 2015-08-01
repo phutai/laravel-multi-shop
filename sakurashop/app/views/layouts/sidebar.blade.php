@@ -49,46 +49,23 @@
         <div id="cssmenu">
         <ul class="list-group margin-bottom-25 sidebar-menu">
             <li class="list-group-item category-item clearfix"><h4>Chọn danh mục</h4></li>
-            <?php 
-                $categories = admin\Category::loadCategories();
+            <?php $categories = admin\Category::loadCategories(); ?>
 
-                function getSubcategory($parent_id, $categories){
-                    echo '<ul>';
-                    foreach ($categories as $catChild) {
-                        if ($catChild->parent_id == $parent_id) {
-                            echo '<li class="list-group-item category-item clearfix
-                                @if(isset($category))
-                                @if($catChild->id == $category->id)
-                                active
-                                @endif
-                            @endif
-                                    "><a href="'.URL::to("/").'/danh-muc/'.$catChild->alias.'"><i
-                                            class="fa fa-angle-right"></i>'.$catChild->name.'
-                                    ('.CommonHelper::countCategory($catChild->id).')</a>';
-                            getSubcategory($catChild->id, $categories);
-                            echo '</li>';
-                        }
-                    }
-                    echo '</ul>';
-                }
-
-                foreach ($categories as $cat) {
-                    echo '<li class="list-group-item category-item clearfix
-                        @if(isset($category))
-                        @if($cat->id == $category->id)
-                        active
-                        @endif
+            @foreach ($categories as $cat)
+                <li class="list-group-item category-item clearfix
+                    @if(isset($category))
+                    @if($cat->id == $category->id)
+                    active
                     @endif
-                            "><a href="'.URL::to("/").'/danh-muc/'.$cat->alias.'"><i
-                                    class="fa fa-angle-right"></i>'.$cat->name.'
-                            ('.CommonHelper::countCategory($cat->id).')</a>';
-                    getSubcategory($cat->id, $categories);
-                    echo '</li>';
-                }
+                @endif
+                        "><a href="{{URL::to("/")}}/danh-muc/{{{$cat->alias}}}"><i
+                    class="fa fa-angle-right"></i>{{{$cat->name}}}
+                    ({{CommonHelper::countCategory($cat->id)}}
+                    )</a>
 
-
-
-            ?>
+                    <?php Category::getSubcategory($cat->id, $categories); ?>
+                </li>
+            @endforeach
         </ul>
         </div>
         <div style="clear: both"></div>
