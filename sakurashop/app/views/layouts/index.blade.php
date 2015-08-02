@@ -219,7 +219,6 @@
             </div>
 
             <!-- END SIDEBAR & CONTENT -->
-            @include('layouts.slider2')
 
         </div>
     </div>
