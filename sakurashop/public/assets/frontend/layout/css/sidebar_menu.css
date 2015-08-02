@@ -46,6 +46,12 @@
   float: none;
 }
 /* Custom CSS Styles */
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul ul {
+  background: white;
+}
 #cssmenu:before {
   content: '';
   display: block;
