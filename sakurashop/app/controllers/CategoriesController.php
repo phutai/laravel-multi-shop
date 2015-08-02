@@ -87,7 +87,9 @@ class CategoriesController extends BaseController
                 // analyze each product to properties
                 foreach ($temp as $keyData => $value) {
                     if ($keyData == 0) {
-                        $productCode = str_replace("('|~|.)", "", $value);
+                        $productCode = str_replace("~", "", $value);
+                        $productCode = str_replace("'", "", $productCode);
+                        $productCode = str_replace(".", "", $productCode);
                     }
                     if ($keyData == 2) {
                         // split all categories of product
