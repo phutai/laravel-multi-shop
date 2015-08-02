@@ -15,6 +15,7 @@ Route::get('/', 'ProductsController@index');
 Route::get('/search/{q}', ['uses' =>'SearchController@search']);
 Route::get('/gioi-thieu', ['uses' =>'PagesController@about']);
 Route::get('/importPage', 'CategoriesController@showImportPage');
+Route::get('/fixImageName', 'CategoriesController@correctNameImage');
 Route::post('importData', 'CategoriesController@importData');
 Route::group(array('prefix' => 'admin', 'before'=>'admin'), function () {
 
@@ -30,6 +31,7 @@ Route::group(array('prefix' => 'admin', 'before'=>'admin'), function () {
     Route::resource('options', 'admin\OptionsController');
     Route::resource('optionvalues', 'admin\OptionvaluesController');
     Route::resource('orderproducts', 'admin\OrderproductsController');
+    Route::resource('sliders', 'admin\SlidersController');
 });
 
 Route::group(array('prefix' => 'admin', 'before'=>'baseadmin'), function () {
@@ -37,6 +39,7 @@ Route::group(array('prefix' => 'admin', 'before'=>'baseadmin'), function () {
     Route::get('/', 'admin\OrdersController@index');
     Route::post('/orders/loadOrders', 'admin\OrdersController@loadOrders');
     Route::resource('orders', 'admin\OrdersController');
+   
     Route::post('/sendMail', array('as' => 'sendMail', 
     'uses' => 'admin\OrdersController@sendMail'));
     Route::get('/createMail', 'admin\OrdersController@createMail');
@@ -59,3 +62,20 @@ Route::resource('orders', 'OrdersController');
 Route::get('/danh-muc/{alias?}', array('uses' => 'CategoriesController@show'))->where('alias', '.*');
 //Route::get('/tim-kiem/{alias?}', array('uses' => 'SearchController@search'))->where('alias', '.*');
 Route::get('/san-pham/{alias?}', array('uses' => 'ProductsController@show'))->where('alias', '.*');
+
+
+Route::resource('slides', 'SlidesController');
+
+Route::resource('sliders', 'SlidersController');
+
+Route::resource('sliders', 'SlidersController');
+
+Route::resource('sliders', 'SlidersController');
+
+Route::resource('slides', 'SlidesController');
+
+Route::resource('slides', 'SlidesController');
+
+Route::resource('sliders', 'SlidersController');
+
+Route::resource('posts', 'PostsController');

@@ -150,9 +150,6 @@ class CategoriesController extends BaseController
                     // get product large image of category
                     if ($keyData == 7) {
                         $productLargeImage = $value;
-                    }
-                    // get product image of category
-                    if ($keyData == 8) {
                         $productImage = $value;
                     }
                 }
@@ -161,6 +158,7 @@ class CategoriesController extends BaseController
                     array('model' => $productCode, 'name' => $productName, 'sale_price' => $productPrice, 'special_price' => $productPrice
                         , 'image' => $productImage, 'large_image' => $productLargeImage
                         , 'description' => $productDescription, 'category_id' => $productCategory
+                        , 'status' => '1', 'quantity' => '1000'
                         , 'alias' => CommonHelper::url_slug($productName)
                 ));
             }
@@ -173,7 +171,10 @@ class CategoriesController extends BaseController
     }
 
     public function correctNameImage() {
-        $dir = 'C:\Users\Eraoni\Downloads\New folder';
+        $dir =  str_replace("\\", "/", __DIR__);
+        $dir = dirname($dir);
+        $dir = dirname($dir);
+        $dir = $dir.'/public/image';
         $files1 = scandir($dir);
         foreach($files1 as $key => $file) {
             if ($key > 1 && strpos($file,"_300x300")) {
