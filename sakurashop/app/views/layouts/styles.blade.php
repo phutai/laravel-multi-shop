@@ -18,7 +18,7 @@
 <link href="{{URL::to("/assets/global/css/components.css")}}" rel="stylesheet">
 <link href="{{URL::to("/assets/frontend/layout/css/style.css")}}" rel="stylesheet">
 <link href="{{URL::to("/assets/frontend/layout/css/sidebar_menu.css")}}" rel="stylesheet">
-<link href="{{URL::to("/assets/frontend/pages/css/style-shop.css")}}" rel="stylesheet" type="text/css")}}">
+<link href="{{URL::to("/assets/frontend/pages/css/style-shop.css")}}" rel="stylesheet" type="text/css">
 <link href="{{URL::to("/assets/frontend/pages/css/style-layer-slider.css")}}" rel="stylesheet">
 <link href="{{URL::to("/assets/frontend/layout/css/style-responsive.css")}}" rel="stylesheet">
 <link href="{{URL::to("/assets/frontend/layout/css/themes/red.css")}}" rel="stylesheet" id="style-color">

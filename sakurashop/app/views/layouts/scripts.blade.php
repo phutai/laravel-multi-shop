@@ -23,4 +23,14 @@
 {{--<script src="{{URL::to("/assets/global/plugins/slider-layer-slider/js/layerslider.kreaturamedia.jquery.js")}}" type="text/javascript"></script><!-- LayerSlider script files -->--}}
 {{--<script src="{{URL::to("/assets/frontend/pages/scripts/layerslider-init.js")}}" type="text/javascript"></script>--}}
 <script src="{{URL::to("/assets/frontend/layout/scripts/layout.js")}}" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        Layout.init();    
+        Layout.initOWL();
+        LayersliderInit.initLayerSlider();
+        Layout.initImageZoom();
+        Layout.initTouchspin();
+        Layout.initTwitter();
+    });
+</script>
 @yield('scripts')

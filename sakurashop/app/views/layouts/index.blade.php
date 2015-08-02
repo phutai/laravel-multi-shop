@@ -200,6 +200,10 @@
     <div class="main g-background">
         <div class="container  body-panel">
             @yield('breadcrumb')
+            <!-- BEGIN SLIDER -->
+            <div class="row margin-bottom-40 ">
+                 @include('layouts.slider1')
+            </div>
             <!-- BEGIN SIDEBAR & CONTENT -->
             <div class="row margin-bottom-40 ">
                 <!-- BEGIN SIDEBAR -->
@@ -215,7 +219,7 @@
             </div>
 
             <!-- END SIDEBAR & CONTENT -->
-
+            @include('layouts.slider2')
 
         </div>
     </div>
