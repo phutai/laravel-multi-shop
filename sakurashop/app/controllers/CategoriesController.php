@@ -75,6 +75,7 @@ class CategoriesController extends BaseController
             // is product's category exist in database? flag
             $existCategory = 0;
 
+            $productCode = '';
             $productName = '';
             $productPrice = 0.0;
             $productCategory = 0;
@@ -85,6 +86,9 @@ class CategoriesController extends BaseController
             if (count($temp) > 0) {
                 // analyze each product to properties
                 foreach ($temp as $keyData => $value) {
+                    if ($keyData == 0) {
+                        $productCode = str_replace("('|~|.)", "", $value);
+                    }
                     if ($keyData == 2) {
                         // split all categories of product
                         $categories = explode('/', $value);
@@ -152,7 +156,7 @@ class CategoriesController extends BaseController
                 }
                 // insert product to database
                 $isSuccess = DB::table('products')->insert(
-                    array('name'=> $productName, 'sale_price' => $productPrice, 'special_price' => $productPrice
+                    array('model' => $productCode, 'name' => $productName, 'sale_price' => $productPrice, 'special_price' => $productPrice
                         , 'image' => $productImage, 'large_image' => $productLargeImage
                         , 'description' => $productDescription, 'category_id' => $productCategory
                         , 'alias' => CommonHelper::url_slug($productName)
@@ -166,4 +170,18 @@ class CategoriesController extends BaseController
             printf('false');
     }
 
+    public function correctNameImage() {
+        $dir = 'C:\Users\Eraoni\Downloads\New folder';
+        $files1 = scandir($dir);
+        foreach($files1 as $key => $file) {
+            if ($key > 1 && strpos($file,"_300x300")) {
+                $newName = str_replace("_300x300", "", $file);
+                rename($dir.'/'.$file, $dir.'/'.$newName);
+            }
+            if ($key > 1 && strpos($file,"_120x120")) {
+                $newName = str_replace("_120x120", "", $file);
+                rename($dir.'/'.$file, $dir.'/'.$newName);
+            }          
+        }       
+    }
 }
