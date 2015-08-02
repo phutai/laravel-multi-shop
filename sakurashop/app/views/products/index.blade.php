@@ -16,7 +16,7 @@
                         <img src="{{URL::to("/images/cache/")}}/{{Config::get('configs.thumb_image')}}/{{{$product->image}}}" data-src="{{{ $product->image }}}" class="img-responsive" alt="Berry Lace Dress">
                     </div>
                         <div class="product-box-info">
-                            <p class="name-product">Mã số : <b>{{{ $product->model }}}</b><br/>Tên : {{{ Str::limit($product->name, 32)  }}}</p>
+                            <p class="name-product">Tên : {{{ Str::limit($product->name, 32)  }}}</p>
 
                         </div>
                     <div class="pi-price">{{ CommonHelper::displaySalePrice($product) }}</div>
@@ -43,7 +43,7 @@
                                     <img src="{{URL::to("/images/cache/")}}/{{Config::get('configs.thumb_image')}}/{{{$product->image}}}" data-src="{{{ $product->image }}}" class="img-responsive" alt="Berry Lace Dress">
                                 </div>
                                 <div class="product-box-info">
-                                    <p class="name-product">Mã số : <b>{{{ $product->model }}}</b><br/>Tên : {{{ Str::limit($product->name, 32)  }}}</p>
+                                    <p class="name-product">{{{ Str::limit($product->name, 32)  }}}</p>
 
                                 </div>
 
