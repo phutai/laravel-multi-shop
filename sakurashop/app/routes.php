@@ -14,6 +14,7 @@
 Route::get('/', 'ProductsController@index');
 Route::get('/search/{q}', ['uses' =>'SearchController@search']);
 Route::get('/gioi-thieu', ['uses' =>'PagesController@about']);
+Route::get('/tin-tuc', 'PostsController@index');
 Route::get('/importPage', 'CategoriesController@showImportPage');
 Route::get('/fixImageName', 'CategoriesController@correctNameImage');
 Route::post('importData', 'CategoriesController@importData');
@@ -33,8 +34,10 @@ Route::group(array('prefix' => 'admin', 'before'=>'admin'), function () {
     Route::resource('orderproducts', 'admin\OrderproductsController');
     Route::resource('sliders', 'admin\SlidersController');
     Route::resource('slides', 'admin\SlidesController');
+    Route::resource('posts', 'admin\PostsController');
     Route::post('/sliders/loadSliders', 'admin\SlidersController@results');
     Route::post('/slides/loadSlides', 'admin\SlidesController@results');
+    Route::post('/posts/loadPosts', 'admin\PostsController@results');
 });
 
 Route::group(array('prefix' => 'admin', 'before'=>'baseadmin'), function () {
@@ -67,5 +70,3 @@ Route::get('/danh-muc/{alias?}', array('uses' => 'CategoriesController@show'))->
 Route::get('/san-pham/{alias?}', array('uses' => 'ProductsController@show'))->where('alias', '.*');
 
 
-
-Route::resource('posts', 'PostsController');

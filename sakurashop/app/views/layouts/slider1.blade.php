@@ -6,7 +6,6 @@
       $slides = admin\Slide::loadSlides(); 
       ?>
     @foreach ($slides as $key => $value)
-      @if ($value->sliders_id == $slidersID)
         <div>
           <div class="product-item">
             <div class="pi-img-wrapper">
@@ -14,7 +13,6 @@
             </div>
           </div>
         </div>
-      @endif
     @endforeach
   </div>
 </div>

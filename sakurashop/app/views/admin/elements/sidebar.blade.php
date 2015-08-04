@@ -86,16 +86,21 @@
             </li>              
             @endif
             @if(array_key_exists('_superadmin', $authentication->getLoggedUser()->permissions))
-              <li>
-                <a href="{{URL::route('admin.sliders.index')}}">
+                <li>
+                    <a href="{{URL::route('admin.sliders.index')}}">
                     <i class="icon-home"></i>
                     Sliders</a>
-            </li>      
-            <li>
-                <a href="{{URL::route('admin.slides.index')}}">
+                </li>      
+                <li>
+                    <a href="{{URL::route('admin.slides.index')}}">
                     <i class="icon-home"></i>
                     Slides</a>
-            </li>            
+                </li> 
+                <li>
+                    <a href="{{URL::route('admin.posts.index')}}">
+                    <i class="icon-home"></i>
+                    Posts</a>
+                </li>             
             @endif
         </ul>
         <!-- END SIDEBAR MENU -->

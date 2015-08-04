@@ -12,10 +12,7 @@ class Slider extends \Eloquent {
 	);
 
 	public static function loadSlidersTop() {
-		$sliders = DB::table('sliders')
-                     ->select(DB::raw('id'))
-                     ->where('positison', '=', 'top')
-                     ->first();
-		return $sliders->id;
+		$sliders = new Slider();
+		return $sliders->all();
 	}
 }

@@ -1,10 +1,10 @@
-@extends('layouts.scaffold')
+@extends('admin.layouts.admin')
 
 @section('main')
 
 <div class="row">
     <div class="col-md-10 col-md-offset-2">
-        <h1>Create Post</h1>
+        <h1>Edit Post</h1>
 
         @if ($errors->any())
         	<div class="alert alert-danger">
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-{{ Form::open(array('route' => 'posts.store', 'class' => 'form-horizontal')) }}
+{{ Form::model($post, array('class' => 'form-horizontal', 'method' => 'PATCH', 'route' => array('admin.posts.update', $post->id))) }}
 
         <div class="form-group">
             {{ Form::label('title', 'Title:', array('class'=>'col-md-2 control-label')) }}
@@ -28,7 +28,7 @@
         <div class="form-group">
             {{ Form::label('description', 'Description:', array('class'=>'col-md-2 control-label')) }}
             <div class="col-sm-10">
-              {{ Form::textarea('description', Input::old('description'), array('class'=>'form-control', 'placeholder'=>'Description')) }}
+              {{ Form::textarea('description', Input::old('description'), array('class'=>'form-control ckeditor', 'placeholder'=>'Description')) }}
             </div>
         </div>
 
@@ -64,12 +64,11 @@
 <div class="form-group">
     <label class="col-sm-2 control-label">&nbsp;</label>
     <div class="col-sm-10">
-      {{ Form::submit('Create', array('class' => 'btn btn-lg btn-primary')) }}
+      {{ Form::submit('Update', array('class' => 'btn btn-lg btn-primary')) }}
+      {{ link_to_route('admin.posts.show', 'Cancel', $post->id, array('class' => 'btn btn-lg btn-default')) }}
     </div>
 </div>
 
 {{ Form::close() }}
-
+<script src="{{URL::to("/js/ckeditor/ckeditor.js")}}" type="text/javascript"></script>
 @stop
-
-
