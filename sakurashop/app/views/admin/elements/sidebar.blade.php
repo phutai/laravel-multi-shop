@@ -85,6 +85,18 @@
                     Gian hàng</a>
             </li>              
             @endif
+            @if(array_key_exists('_superadmin', $authentication->getLoggedUser()->permissions))
+              <li>
+                <a href="{{URL::route('admin.sliders.index')}}">
+                    <i class="icon-home"></i>
+                    Sliders</a>
+            </li>      
+            <li>
+                <a href="{{URL::route('admin.slides.index')}}">
+                    <i class="icon-home"></i>
+                    Slides</a>
+            </li>            
+            @endif
         </ul>
         <!-- END SIDEBAR MENU -->
     </div>

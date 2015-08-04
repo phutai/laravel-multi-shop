@@ -1,4 +1,4 @@
-@extends('layouts.scaffold')
+@extends('admin.layouts.admin')
 
 @section('main')
 
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-{{ Form::open(array('route' => 'sliders.store', 'class' => 'form-horizontal')) }}
+{{ Form::open(array('route' => 'admin.sliders.store', 'class' => 'form-horizontal')) }}
 
         <div class="form-group">
             {{ Form::label('name', 'Name:', array('class'=>'col-md-2 control-label')) }}
@@ -28,7 +28,7 @@
         <div class="form-group">
             {{ Form::label('position', 'Position:', array('class'=>'col-md-2 control-label')) }}
             <div class="col-sm-10">
-              {{ Form::text('position', Input::old('position'), array('class'=>'form-control', 'placeholder'=>'Position')) }}
+              {{ Form::text('positison', Input::old('positison'), array('class'=>'form-control', 'placeholder'=>'Position')) }}
             </div>
         </div>
 

@@ -1,6 +1,14 @@
 <?php
+namespace admin;
 
-class SlidersController extends BaseController {
+use \View;
+use \Response;
+use \Input;
+use \Validator;
+use \Redirect;
+use \DB;
+
+class SlidersController extends \admin\BaseController {
 
 	/**
 	 * Slider Repository
@@ -23,8 +31,22 @@ class SlidersController extends BaseController {
 	{
 		$sliders = $this->slider->all();
 
-		return View::make('sliders.index', compact('sliders'));
+		return View::make('admin.sliders.index', compact('sliders'));
 	}
+
+	/**
+     * @return mixed
+     */
+    public function results() {
+        
+        $posts = Slider::select('sliders.id', 'sliders.name', 'sliders.positison', 'sliders.type', 'sliders.status');
+        
+        return \Bllim\Datatables\Facade\Datatables::of($posts)->add_column('operations', '
+{{ link_to_route("admin.sliders.edit", "Edit", array($id), array("class" => "btn btn-info")) }}
+                ')->edit_column('id', function ($row) {
+            return "<input type=\"checkbox\" name=\"id[]\" value=\"{$row->id}\">";
+        })->make();
+    }
 
 	/**
 	 * Show the form for creating a new resource.
@@ -33,7 +55,7 @@ class SlidersController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('sliders.create');
+		return View::make('admin.sliders.create');
 	}
 
 	/**
@@ -50,10 +72,10 @@ class SlidersController extends BaseController {
 		{
 			$this->slider->create($input);
 
-			return Redirect::route('sliders.index');
+			return Redirect::route('admin.sliders.index');
 		}
 
-		return Redirect::route('sliders.create')
+		return Redirect::route('admin.sliders.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -69,7 +91,7 @@ class SlidersController extends BaseController {
 	{
 		$slider = $this->slider->findOrFail($id);
 
-		return View::make('sliders.show', compact('slider'));
+		return View::make('admin.sliders.show', compact('slider'));
 	}
 
 	/**
@@ -84,10 +106,10 @@ class SlidersController extends BaseController {
 
 		if (is_null($slider))
 		{
-			return Redirect::route('sliders.index');
+			return Redirect::route('admin.sliders.index');
 		}
 
-		return View::make('sliders.edit', compact('slider'));
+		return View::make('admin.sliders.edit', compact('slider'));
 	}
 
 	/**
@@ -106,10 +128,10 @@ class SlidersController extends BaseController {
 			$slider = $this->slider->find($id);
 			$slider->update($input);
 
-			return Redirect::route('sliders.show', $id);
+			return Redirect::route('admin.sliders.show', $id);
 		}
 
-		return Redirect::route('sliders.edit', $id)
+		return Redirect::route('admin.sliders.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -125,7 +147,7 @@ class SlidersController extends BaseController {
 	{
 		$this->slider->find($id)->delete();
 
-		return Redirect::route('sliders.index');
+		return Redirect::route('admin.sliders.index');
 	}
 
 }

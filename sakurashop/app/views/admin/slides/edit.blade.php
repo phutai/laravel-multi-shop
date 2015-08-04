@@ -1,4 +1,4 @@
-@extends('layouts.scaffold')
+@extends('admin.layouts.admin')
 
 @section('main')
 
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-{{ Form::model($slide, array('class' => 'form-horizontal', 'method' => 'PATCH', 'route' => array('slides.update', $slide->id))) }}
+{{ Form::model($slide, array('class' => 'form-horizontal', 'method' => 'PATCH', 'route' => array('admin.slides.update', $slide->id))) }}
 
         <div class="form-group">
             {{ Form::label('sliders_id', 'Sliders_id:', array('class'=>'col-md-2 control-label')) }}
@@ -40,9 +40,10 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('image', 'Image:', array('class'=>'col-md-2 control-label')) }}
+            <label class="col-md-2 control-label" for="exampleInputFile1">Image:</label>
+
             <div class="col-sm-10">
-              {{ Form::text('image', Input::old('image'), array('class'=>'form-control', 'placeholder'=>'Image')) }}
+                <input type="file" name="image" class="form-control" accept="*.swf">
             </div>
         </div>
 
@@ -65,7 +66,7 @@
     <label class="col-sm-2 control-label">&nbsp;</label>
     <div class="col-sm-10">
       {{ Form::submit('Update', array('class' => 'btn btn-lg btn-primary')) }}
-      {{ link_to_route('slides.show', 'Cancel', $slide->id, array('class' => 'btn btn-lg btn-default')) }}
+      {{ link_to_route('admin.slides.index', 'Cancel', $slide->id, array('class' => 'btn btn-lg btn-default')) }}
     </div>
 </div>
 

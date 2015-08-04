@@ -32,6 +32,9 @@ Route::group(array('prefix' => 'admin', 'before'=>'admin'), function () {
     Route::resource('optionvalues', 'admin\OptionvaluesController');
     Route::resource('orderproducts', 'admin\OrderproductsController');
     Route::resource('sliders', 'admin\SlidersController');
+    Route::resource('slides', 'admin\SlidesController');
+    Route::post('/sliders/loadSliders', 'admin\SlidersController@results');
+    Route::post('/slides/loadSlides', 'admin\SlidesController@results');
 });
 
 Route::group(array('prefix' => 'admin', 'before'=>'baseadmin'), function () {
@@ -64,18 +67,5 @@ Route::get('/danh-muc/{alias?}', array('uses' => 'CategoriesController@show'))->
 Route::get('/san-pham/{alias?}', array('uses' => 'ProductsController@show'))->where('alias', '.*');
 
 
-Route::resource('slides', 'SlidesController');
-
-Route::resource('sliders', 'SlidersController');
-
-Route::resource('sliders', 'SlidersController');
-
-Route::resource('sliders', 'SlidersController');
-
-Route::resource('slides', 'SlidesController');
-
-Route::resource('slides', 'SlidesController');
-
-Route::resource('sliders', 'SlidersController');
 
 Route::resource('posts', 'PostsController');

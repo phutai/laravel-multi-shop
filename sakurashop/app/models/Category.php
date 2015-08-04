@@ -14,7 +14,7 @@ class Category extends \Eloquent {
                                 <a href="'.URL::to("/").'/danh-muc/'.$catChild->alias.'"><i
                                 class="fa fa-angle-right"></i>'.$catChild->name;
                 if (Category::checkChild($catChild->id) > 0) {
-                    $childString = $childString.'<span style="float:right;font-size:70%">>></span>';
+                    $childString = $childString.'<i class="fa fa-angle-double-right"></i>';
                 }
                 $childString = $childString.'</a>';
                 echo $childString;

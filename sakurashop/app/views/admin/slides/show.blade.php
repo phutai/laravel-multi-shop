@@ -1,10 +1,10 @@
-@extends('layouts.scaffold')
+@extends('admin.layouts.admin')
 
 @section('main')
 
 <h1>Show Slide</h1>
 
-<p>{{ link_to_route('slides.index', 'Return to All slides', null, array('class'=>'btn btn-lg btn-primary')) }}</p>
+<p>{{ link_to_route('admin.slides.index', 'Return to All slides', null, array('class'=>'btn btn-lg btn-primary')) }}</p>
 
 <table class="table table-striped">
 	<thead>
@@ -27,10 +27,10 @@
 					<td>{{{ $slide->link }}}</td>
 					<td>{{{ $slide->status }}}</td>
                     <td>
-                        {{ Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'route' => array('slides.destroy', $slide->id))) }}
+                        {{ Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'route' => array('admin.slides.destroy', $slide->id))) }}
                             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
-                        {{ link_to_route('slides.edit', 'Edit', array($slide->id), array('class' => 'btn btn-info')) }}
+                        {{ link_to_route('admin.slides.edit', 'Edit', array($slide->id), array('class' => 'btn btn-info')) }}
                     </td>
 		</tr>
 	</tbody>

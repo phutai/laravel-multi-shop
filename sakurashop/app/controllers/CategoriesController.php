@@ -146,6 +146,7 @@ class CategoriesController extends BaseController
                     // get product price of category
                     if ($keyData == 6) {
                         $productPrice = $value;
+                        $productPrice = $productPrice.',000';
                     }
                     // get product large image of category
                     if ($keyData == 7) {

@@ -52,22 +52,24 @@
             <?php $categories = admin\Category::loadCategories(); ?>
 
             @foreach ($categories as $cat)
-                <li class="list-group-item category-item clearfix
-                    @if(isset($category))
-                    @if($cat->id == $category->id)
-                    active
+                @if ($cat->parent_id == 0)
+                    <li class="list-group-item category-item clearfix
+                        @if(isset($category))
+                        @if($cat->id == $category->id)
+                        active
+                        @endif
                     @endif
-                @endif
-                        "><a href="{{URL::to("/")}}/danh-muc/{{{$cat->alias}}}"><i
-                    class="fa fa-angle-right"></i>{{{$cat->name}}}
-                <?php $child = Category::checkChild($cat->id); ?>
-                @if ($child > 0)
-                    <span style="float:right;font-size:70%">>></span>
-                @endif
-                </a>
+                            "><a href="{{URL::to("/")}}/danh-muc/{{{$cat->alias}}}"><i
+                        class="fa fa-angle-right"></i>{{{$cat->name}}}
+                    <?php $child = Category::checkChild($cat->id); ?>
+                    @if ($child > 0)
+                        <i class="fa fa-angle-double-right"></i>
+                    @endif
+                    </a>
 
-                    <?php Category::getSubcategory($cat->id, $categories);?>
-                </li>
+                        <?php Category::getSubcategory($cat->id, $categories);?>
+                    </li>
+                @endif
             @endforeach
         </ul>
         </div>

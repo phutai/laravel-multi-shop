@@ -1,4 +1,4 @@
-@extends('layouts.scaffold')
+@extends('admin.layouts.admin')
 
 @section('main')
 
@@ -16,7 +16,11 @@
     </div>
 </div>
 
-{{ Form::open(array('route' => 'slides.store', 'class' => 'form-horizontal')) }}
+<?php $sliders = DB::table('sliders')
+                    ->select(DB::raw('id, name'))
+                    ->get(); ?>
+
+{{ Form::open(array('route' => 'admin.slides.store', 'class' => 'form-horizontal')) }}
 
         <div class="form-group">
             {{ Form::label('sliders_id', 'Sliders_id:', array('class'=>'col-md-2 control-label')) }}
@@ -40,9 +44,10 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('image', 'Image:', array('class'=>'col-md-2 control-label')) }}
+            <label class="col-md-2 control-label" for="exampleInputFile1">Image:</label>
+
             <div class="col-sm-10">
-              {{ Form::text('image', Input::old('image'), array('class'=>'form-control', 'placeholder'=>'Image')) }}
+                <input type="file" name="image" class="form-control" accept="*.swf">
             </div>
         </div>
 

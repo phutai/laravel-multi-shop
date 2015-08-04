@@ -1,4 +1,4 @@
-@extends('layouts.scaffold')
+@extends('admin.layouts.admin')
 
 @section('main')
 
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-{{ Form::model($slider, array('class' => 'form-horizontal', 'method' => 'PATCH', 'route' => array('sliders.update', $slider->id))) }}
+{{ Form::model($slider, array('class' => 'form-horizontal', 'method' => 'PATCH', 'route' => array('admin.sliders.update', $slider->id))) }}
 
         <div class="form-group">
             {{ Form::label('name', 'Name:', array('class'=>'col-md-2 control-label')) }}
@@ -28,7 +28,7 @@
         <div class="form-group">
             {{ Form::label('position', 'Position:', array('class'=>'col-md-2 control-label')) }}
             <div class="col-sm-10">
-              {{ Form::text('position', Input::old('position'), array('class'=>'form-control', 'placeholder'=>'Position')) }}
+              {{ Form::text('positison', Input::old('positison'), array('class'=>'form-control', 'placeholder'=>'Position')) }}
             </div>
         </div>
 
@@ -51,7 +51,7 @@
     <label class="col-sm-2 control-label">&nbsp;</label>
     <div class="col-sm-10">
       {{ Form::submit('Update', array('class' => 'btn btn-lg btn-primary')) }}
-      {{ link_to_route('sliders.show', 'Cancel', $slider->id, array('class' => 'btn btn-lg btn-default')) }}
+      {{ link_to_route('admin.sliders.index', 'Cancel', $slider->id, array('class' => 'btn btn-lg btn-default')) }}
     </div>
 </div>
 
