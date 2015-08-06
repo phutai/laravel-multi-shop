@@ -45,31 +45,31 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <div class="clearfix"></div><br/><br/>
+        <div class="clearfix"></div>
+        <br/><br/>
+
         <div id="cssmenu">
         <ul class="list-group margin-bottom-25 sidebar-menu">
             <li class="list-group-item category-item clearfix"><h4>Chọn danh mục</h4></li>
             <?php $categories = admin\Category::loadCategories(); ?>
 
             @foreach ($categories as $cat)
-                @if ($cat->parent_id == 0)
-                    <li class="list-group-item category-item clearfix
-                        @if(isset($category))
-                        @if($cat->id == $category->id)
-                        active
-                        @endif
+                <li class="list-group-item category-item clearfix
+                    @if(isset($category))
+                    @if($cat->id == $category->id)
+                    active
                     @endif
-                            "><a href="{{URL::to("/")}}/danh-muc/{{{$cat->alias}}}"><i
-                        class="fa fa-angle-right"></i>{{{$cat->name}}}
-                    <?php $child = Category::checkChild($cat->id); ?>
-                    @if ($child > 0)
-                        <i class="fa fa-angle-double-right"></i>
-                    @endif
-                    </a>
-
-                        <?php Category::getSubcategory($cat->id, $categories);?>
-                    </li>
                 @endif
+                        "><a href="{{URL::to("/")}}/danh-muc/{{{$cat->alias}}}"><i
+                    class="fa fa-angle-right"></i>{{{$cat->name}}}
+                <?php $child = Category::checkChild($cat->id); ?>
+                @if ($child > 0)
+                    <span style="float:right;font-size:70%">>></span>
+                @endif
+                </a>
+
+                    <?php Category::getSubcategory($cat->id, $categories);?>
+                </li>
             @endforeach
         </ul>
         </div>

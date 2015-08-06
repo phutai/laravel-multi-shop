@@ -31,18 +31,18 @@
                             <td class="datasheet-features-type  col-md-4">Giá</td>
                             <td class="show-sale-price">{{{CommonHelper::format_money(CommonHelper::processPrice($product))}}}</td>
                         </tr>
-                        <tr>
-                            <td class="datasheet-features-type  col-md-4">Size</td>
-                            <td>{{{$product->size}}}</td>
-                        </tr>
-                        <tr>
-                            <td class="datasheet-features-type  col-md-4">Chất liệu</td>
-                            <td>{{{$product->material}}}</td>
-                        </tr>
-                        <tr>
-                            <td class="datasheet-features-type  col-md-4">Màu sắc</td>
-                            <td>{{{$product->color}}}</td>
-                        </tr>
+                        {{--<tr>--}}
+                            {{--<td class="datasheet-features-type  col-md-4">Size</td>--}}
+                            {{--<td>{{{$product->size}}}</td>--}}
+                        {{--</tr>--}}
+                        {{--<tr>--}}
+                            {{--<td class="datasheet-features-type  col-md-4">Chất liệu</td>--}}
+                            {{--<td>{{{$product->material}}}</td>--}}
+                        {{--</tr>--}}
+                        {{--<tr>--}}
+                            {{--<td class="datasheet-features-type  col-md-4">Màu sắc</td>--}}
+                            {{--<td>{{{$product->color}}}</td>--}}
+                        {{--</tr>--}}
                         <tr>
                             <td class="datasheet-features-type col-md-4">Tình trạng</td>
                             <td>{{{ ($product->status)? "Còn hàng" : "Hết hàng" }}}</td>

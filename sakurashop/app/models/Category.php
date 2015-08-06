@@ -14,7 +14,7 @@ class Category extends \Eloquent {
                                 <a href="'.URL::to("/").'/danh-muc/'.$catChild->alias.'"><i
                                 class="fa fa-angle-right"></i>'.$catChild->name;
                 if (Category::checkChild($catChild->id) > 0) {
-                    $childString = $childString.'<i class="fa fa-angle-double-right"></i>';
+                    $childString = $childString.'<i class="fa fa-angle-double-right" style="float: right"></i>';
                 }
                 $childString = $childString.'</a>';
                 echo $childString;
@@ -27,7 +27,7 @@ class Category extends \Eloquent {
 
     public static function checkChild($parent_id) {
         $child = DB::table('categories')
-                    ->select(DB::raw('count(*) as childCount'))
+                    ->select(DB::raw('count(id) as childCount'))
                     ->where('parent_id', '=', $parent_id)
                     ->first();
         return $child->childCount;

@@ -62,9 +62,9 @@
 
                         <!-- END TOP BAR LEFT PART -->
                         <!-- BEGIN TOP BAR MENU -->
-                        <div class="col-md-6 col-sm-6 additional-nav pull-right" style="text-align: right;">
-                            <a href="{{URL::to("/user/signup")}}"><b>Đăng ký</b></a>
-                        </div>
+                    <div class="col-md-6 col-sm-6 additional-nav" style="text-align: right;">
+                        <a href="{{URL::to("/user/signup")}}" style="font-size: 14px"><b>Đăng ký</b></a>
+                    </div>
                         <div class="clearfix"></div>
                     @else
                         <div class="col-md-6 col-sm-6 additional-shop-info">
@@ -73,7 +73,7 @@
 
                         <!-- END TOP BAR LEFT PART -->
                         <!-- BEGIN TOP BAR MENU -->
-                        <div class="col-md-6 col-sm-6 additional-nav pull-left" style="text-align: right;">
+                    <div class="col-md-6 col-sm-6 additional-nav" style="text-align: right;">
                             <a href="{{URL::to("/user/logout")}}" style="color:#ff0000"><b>Thoát</b></a>
                         </div>
                         <div class="clearfix"></div>
@@ -85,7 +85,7 @@
     <!-- END TOP BAR -->
 
     <!-- BEGIN HEADER -->
-    <div class="header">
+    <div class="header g-background">
         <div class="container">
 
             @if(isset($isMobile) && !isset($isTablet))
@@ -94,7 +94,7 @@
             @else
                 <div class="row">
                     <!-- <div class="col-md-12 col-sm-12"> -->
-                    <a class="site-logo" href="/"><img src="../../assets/frontend/layout/img/logos/logo.png" alt="SakuraShop.VN"></a>
+                    <a class="site-logo" href="/"><img src="{{URL::to('/image/data/')}}/{{$shopinfo->shopinfo->store_baner}}"  alt="SakuraShop.VN"></a>
                     <!-- </div> -->
                 </div>
             @endif
@@ -157,8 +157,9 @@
                 <div class="top-cart-block">
                     <div id="wrapper-top-search">
                         <form id="top-search" method="get" action="/search/">
-                            <input type="submit" class="search" value="">
-                            <input name="q" id="keyword" type="text" class="text" value="" size="18">
+                                {{--<input type="submit" class="search" value="">--}}
+                                <input type="submit" class="search" style="float: right;" value="">
+                                <input name="keyword" id="keyword" type="text" class="text" value="" size="18">
                         </form>
                     </div>
                 </div>
@@ -174,7 +175,7 @@
                                 @endforeach
                                         <!-- BEGIN TOP SEARCH -->
                                 <!-- END TOP SEARCH -->
-                                @if(isset($isMobile))
+                                @if(isset($isMobile) && !isset($isTablet))
                                     <?php $categories = admin\Category::loadCategories() ?>
                                     @foreach($categories as $cat)
                                         <li class="list-group-item clearfix
@@ -276,12 +277,12 @@
         <script type="text/javascript">
             jQuery(document).ready(function () {
                 Layout.init();
-                $('#top-search').on('submit', function(e) {
-                    e.preventDefault();
-                    var keyword = $("#keyword").val();
-                    window.location = '/search/' + keyword;
-                    return false;
-                })
+//                $('#top-search').on('submit', function(e) {
+//                    e.preventDefault();
+//                    var keyword = $("#keyword").val();
+//                    window.location = '/search/' + keyword;
+//                    return false;
+//                })
             });
         </script>
         <?php echo $shopinfo->shopinfo->store_zopim; ?>
