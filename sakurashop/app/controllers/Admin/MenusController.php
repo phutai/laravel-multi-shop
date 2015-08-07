@@ -129,7 +129,7 @@ class MenusController extends \admin\BaseController {
 			$menu = $this->menu->find($id);
 			$menu->update($input);
 
-			return Redirect::route('admin.menus.show', $id);
+			return Redirect::route('admin.menus.index', $id);
 		}
 
 		return Redirect::route('admin.menus.edit', $id)
