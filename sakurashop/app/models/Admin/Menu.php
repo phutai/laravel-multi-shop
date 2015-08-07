@@ -1,17 +1,17 @@
 <?php
 namespace admin;
 
-class Post extends \Eloquent {
+class Menu extends \Eloquent {
 	protected $guarded = array();
 
 	public static $rules = array(
+		'id' => 'required',
 		'title' => 'required',
-		'description' => 'required',
 		'alias' => 'required|unique',
-		'meta-title' => 'required',
-		'meta-description' => 'required',
+		'link' => 'required',
 		'status' => 'required'
 	);
+
 
 	public static function rules($id = 0, $merge = [])
 	{

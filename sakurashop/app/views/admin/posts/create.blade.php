@@ -33,9 +33,8 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('alias', 'Alias:', array('class'=>'col-md-2 control-label')) }}
             <div class="col-sm-10">
-              {{ Form::text('alias', Input::old('alias'), array('class'=>'form-control', 'placeholder'=>'Alias')) }}
+            {{ Form::hidden('alias', Input::old('alias'), array('class'=>'form-control', 'placeholder'=>'Alias', 'readonly'))}}
             </div>
         </div>
 

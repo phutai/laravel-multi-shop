@@ -100,7 +100,12 @@
                     <a href="{{URL::route('admin.posts.index')}}">
                     <i class="icon-home"></i>
                     Posts</a>
-                </li>             
+                </li>            
+                <li>
+                    <a href="{{URL::route('admin.menus.index')}}">
+                    <i class="icon-home"></i>
+                    Menus</a>
+                </li>         
             @endif
         </ul>
         <!-- END SIDEBAR MENU -->
