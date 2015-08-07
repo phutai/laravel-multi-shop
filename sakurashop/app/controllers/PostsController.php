@@ -22,7 +22,7 @@ class PostsController extends BaseController {
 	 */
 	public function index()
 	{
-		$posts = DB::table('posts')->simplePaginate(2);
+		$posts = DB::table('posts')->Paginate(10);
 
 		return View::make('posts.show', compact('posts'));
 	}
