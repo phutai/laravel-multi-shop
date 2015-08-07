@@ -22,8 +22,24 @@ class PostsController extends BaseController {
 	 */
 	public function index()
 	{
-		$posts = $this->post->all();
+		$posts = DB::table('posts')->simplePaginate(2);
 
 		return View::make('posts.show', compact('posts'));
 	}
+
+	/**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $post = $this->post->where('alias', '=', $id)->first();
+        if ($post) {
+            View::share('post', $post);
+
+            return View::make('posts.detail', compact('post'));
+        }
+    }
 }

@@ -2,9 +2,8 @@
   <h2>Thương hiệu nổi bật</h2>
   <div class="owl-carousel owl-carousel5">
     <?php 
-      $slidersID = admin\Slider::loadSlidersTop();
-      $slides = admin\Slide::loadSlides(); 
-      ?>
+      $slides = Slide::getSlider('Top');
+    ?>
     @foreach ($slides as $key => $value)
         <div>
           <div class="product-item">

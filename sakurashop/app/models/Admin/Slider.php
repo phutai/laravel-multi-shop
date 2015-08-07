@@ -10,9 +10,4 @@ class Slider extends \Eloquent {
 		'type' => 'required',
 		'status' => 'required'
 	);
-
-	public static function loadSlidersTop() {
-		$sliders = new Slider();
-		return $sliders->all();
-	}
 }

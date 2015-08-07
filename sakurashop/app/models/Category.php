@@ -32,5 +32,4 @@ class Category extends \Eloquent {
                     ->first();
         return $child->childCount;
     }
-
 }

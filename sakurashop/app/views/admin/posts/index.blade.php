@@ -10,7 +10,7 @@
 					<span class="caption-subject font-green-sharp bold uppercase">All Posts</span>
 				</div>
 				<div class="actions">
-					<a href="{{URL::route('admin.shopinfos.create')}}" class="btn btn-circle btn-default">
+					<a href="{{URL::route('admin.posts.create')}}" class="btn btn-circle btn-default">
 						<i class="fa fa-plus"></i> Add New Post
 						<span class="hidden-480"></span>
 					</a>

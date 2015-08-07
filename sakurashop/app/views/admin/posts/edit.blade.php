@@ -49,7 +49,7 @@
         <div class="form-group">
             {{ Form::label('meta-description', 'Meta-description:', array('class'=>'col-md-2 control-label')) }}
             <div class="col-sm-10">
-              {{ Form::text('meta-description', Input::old('meta-description'), array('class'=>'form-control', 'placeholder'=>'Meta-description')) }}
+              {{ Form::textarea('meta-description', Input::old('meta-description'), array('class'=>'form-control ckeditor', 'placeholder'=>'Meta-description')) }}
             </div>
         </div>
 

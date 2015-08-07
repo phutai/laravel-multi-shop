@@ -68,5 +68,6 @@ Route::resource('orders', 'OrdersController');
 Route::get('/danh-muc/{alias?}', array('uses' => 'CategoriesController@show'))->where('alias', '.*');
 //Route::get('/tim-kiem/{alias?}', array('uses' => 'SearchController@search'))->where('alias', '.*');
 Route::get('/san-pham/{alias?}', array('uses' => 'ProductsController@show'))->where('alias', '.*');
+Route::get('/posts/{alias?}', array('uses' => 'PostsController@show'))->where('alias', '.*');
 
 
