@@ -23,4 +23,5 @@
 <link href="{{URL::to("/assets/frontend/layout/css/style-responsive.css")}}" rel="stylesheet">
 <link href="{{URL::to("/assets/frontend/layout/css/themes/red.css")}}" rel="stylesheet" id="style-color">
 <link href="{{URL::to("/assets/frontend/layout/css/custom.css")}}" rel="stylesheet">
+<link href="{{URL::to("/assets/frontend/layout/css/custom-slider.css")}}" rel="stylesheet">
 <!-- Theme styles END -->

@@ -105,6 +105,11 @@
                     <a href="{{URL::route('admin.menus.index')}}">
                     <i class="icon-home"></i>
                     Menus</a>
+                </li>  
+                <li>
+                    <a href="{{URL::route('admin.promotions.index')}}">
+                    <i class="icon-home"></i>
+                    Promotions</a>
                 </li>         
             @endif
         </ul>

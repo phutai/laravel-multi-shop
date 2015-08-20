@@ -219,6 +219,7 @@
             </div>
 
             <!-- END SIDEBAR & CONTENT -->
+            @include('layouts.promotions')
 
         </div>
     </div>
