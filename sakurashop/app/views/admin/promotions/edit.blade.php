@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-2">
-        <h1>Create Post</h1>
+        <h1>Edit Promotion</h1>
 
         @if ($errors->any())
         	<div class="alert alert-danger">
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-{{ Form::open(array('route' => 'admin.posts.store', 'class' => 'form-horizontal')) }}
+{{ Form::model($promotion, array('class' => 'form-horizontal', 'method' => 'PATCH', 'route' => array('admin.promotions.update', $promotion->id))) }}
 
         <div class="form-group">
             {{ Form::label('title', 'Title:', array('class'=>'col-md-2 control-label')) }}
@@ -28,27 +28,15 @@
         <div class="form-group">
             {{ Form::label('description', 'Description:', array('class'=>'col-md-2 control-label')) }}
             <div class="col-sm-10">
-              {{ Form::textarea('description', Input::old('description'), array('class'=>'form-control ckeditor', 'placeholder'=>'Description')) }}
+              {{ Form::text('description', Input::old('description'), array('class'=>'form-control', 'placeholder'=>'Description')) }}
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-sm-10">
-            {{ Form::hidden('alias', Input::old('alias'), array('class'=>'form-control', 'placeholder'=>'Alias', 'readonly'))}}
-            </div>
-        </div>
+            <label class="col-md-2 control-label" for="exampleInputFile1">Image:</label>
 
-        <div class="form-group">
-            {{ Form::label('meta-title', 'Meta-title:', array('class'=>'col-md-2 control-label')) }}
             <div class="col-sm-10">
-              {{ Form::text('meta-title', Input::old('meta-title'), array('class'=>'form-control', 'placeholder'=>'Meta-title')) }}
-            </div>
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('meta-description', 'Meta-description:', array('class'=>'col-md-2 control-label')) }}
-            <div class="col-sm-10">
-              {{ Form::textarea('meta-description', Input::old('meta-description'), array('class'=>'form-control ckeditor', 'placeholder'=>'Meta-description')) }}
+                <input type="file" name="image" class="form-control" accept="*.swf">
             </div>
         </div>
 
@@ -63,12 +51,11 @@
 <div class="form-group">
     <label class="col-sm-2 control-label">&nbsp;</label>
     <div class="col-sm-10">
-      {{ Form::submit('Create', array('class' => 'btn btn-lg btn-primary')) }}
+      {{ Form::submit('Update', array('class' => 'btn btn-lg btn-primary')) }}
+      {{ link_to_route('admin.promotions.index', 'Cancel', $promotion->id, array('class' => 'btn btn-lg btn-default')) }}
     </div>
 </div>
 
 {{ Form::close() }}
-<script src="{{URL::to("/js/ckeditor/ckeditor.js")}}" type="text/javascript"></script>
+
 @stop
-
-

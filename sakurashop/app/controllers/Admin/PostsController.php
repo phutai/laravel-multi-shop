@@ -7,6 +7,7 @@ use \Input;
 use \Validator;
 use \Redirect;
 use \DB;
+use \CommonHelper;
 
 class PostsController extends \admin\BaseController {
 
@@ -66,8 +67,9 @@ class PostsController extends \admin\BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, Post::$rules);
 
+		if (!empty($input['title'])) $input['alias'] = CommonHelper::url_slug($input['title']);
+		$validation = Validator::make($input, Post::rules());
 		if ($validation->passes())
 		{
 			$this->post->create($input);

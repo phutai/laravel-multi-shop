@@ -35,9 +35,13 @@ Route::group(array('prefix' => 'admin', 'before'=>'admin'), function () {
     Route::resource('sliders', 'admin\SlidersController');
     Route::resource('slides', 'admin\SlidesController');
     Route::resource('posts', 'admin\PostsController');
+    Route::resource('menus', 'admin\MenusController');
+    Route::resource('promotions', 'admin\PromotionsController');
     Route::post('/sliders/loadSliders', 'admin\SlidersController@results');
     Route::post('/slides/loadSlides', 'admin\SlidesController@results');
     Route::post('/posts/loadPosts', 'admin\PostsController@results');
+    Route::post('/menus/loadMenus', 'admin\MenusController@results');
+    Route::post('/promotions/loadPromotions', 'admin\PromotionsController@results');
 });
 
 Route::group(array('prefix' => 'admin', 'before'=>'baseadmin'), function () {

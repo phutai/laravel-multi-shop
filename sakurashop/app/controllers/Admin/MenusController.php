@@ -8,18 +8,18 @@ use \Validator;
 use \Redirect;
 use \DB;
 
-class SlidesController extends \admin\BaseController {
+class MenusController extends \admin\BaseController {
 
 	/**
-	 * Slide Repository
+	 * Menu Repository
 	 *
-	 * @var Slide
+	 * @var Menu
 	 */
-	protected $slide;
+	protected $menu;
 
-	public function __construct(Slide $slide)
+	public function __construct(Menu $menu)
 	{
-		$this->slide = $slide;
+		$this->menu = $menu;
 	}
 
 	/**
@@ -29,9 +29,8 @@ class SlidesController extends \admin\BaseController {
 	 */
 	public function index()
 	{
-		$slides = $this->slide->all();
-
-		return View::make('admin.slides.index', compact('slides'));
+		$menus = $this->menu->all();
+		return View::make('admin.menus.index', compact('menus'));
 	}
 
 	/**
@@ -39,10 +38,10 @@ class SlidesController extends \admin\BaseController {
      */
     public function results() {
         
-        $slides = Slide::select('slides.id', 'slides.sliders_id', 'slides.title', 'slides.description', 'slides.image', 'slides.link', 'slides.status');
+        $menus = Menu::select('menus.id', 'menus.title', 'menus.alias', 'menus.link', 'menus.category', 'menus.status', 'menus.target');
         
-        return \Bllim\Datatables\Facade\Datatables::of($slides)->add_column('operations', '
-{{ link_to_route("admin.slides.edit", "Edit", array($id), array("class" => "btn btn-info")) }}
+        return \Bllim\Datatables\Facade\Datatables::of($menus)->add_column('operations', '
+{{ link_to_route("admin.menus.edit", "Edit", array($id), array("class" => "btn btn-info")) }}
                 ')->edit_column('id', function ($row) {
             return "<input type=\"checkbox\" name=\"id[]\" value=\"{$row->id}\">";
         })->make();
@@ -55,7 +54,7 @@ class SlidesController extends \admin\BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.slides.create');
+		return View::make('admin.menus.create');
 	}
 
 	/**
@@ -66,16 +65,18 @@ class SlidesController extends \admin\BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, Slide::$rules);
+
+		if (!empty($input['title'])) $input['alias'] = CommonHelper::url_slug($input['title']);
+		$validation = Validator::make($input, Menu::$rules);
 
 		if ($validation->passes())
 		{
-			$this->slide->create($input);
+			$this->menu->create($input);
 
-			return Redirect::route('admin.slides.index');
+			return Redirect::route('admin.menus.index');
 		}
 
-		return Redirect::route('admin.slides.create')
+		return Redirect::route('admin.menus.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -89,9 +90,9 @@ class SlidesController extends \admin\BaseController {
 	 */
 	public function show($id)
 	{
-		$slide = $this->slide->findOrFail($id);
+		$menu = $this->menu->findOrFail($id);
 
-		return View::make('admin.slides.show', compact('slide'));
+		return View::make('admin.menus.show', compact('menu'));
 	}
 
 	/**
@@ -102,14 +103,14 @@ class SlidesController extends \admin\BaseController {
 	 */
 	public function edit($id)
 	{
-		$slide = $this->slide->find($id);
+		$menu = $this->menu->find($id);
 
-		if (is_null($slide))
+		if (is_null($menu))
 		{
-			return Redirect::route('admin.slides.index');
+			return Redirect::route('admin.menus.index');
 		}
 
-		return View::make('admin.slides.edit', compact('slide'));
+		return View::make('admin.menus.edit', compact('menu'));
 	}
 
 	/**
@@ -121,17 +122,17 @@ class SlidesController extends \admin\BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Slide::$rules);
+		$validation = Validator::make($input, Menu::$rules);
 
 		if ($validation->passes())
 		{
-			$slide = $this->slide->find($id);
-			$slide->update($input);
+			$menu = $this->menu->find($id);
+			$menu->update($input);
 
-			return Redirect::route('admin.slides.show', $id);
+			return Redirect::route('admin.menus.index', $id);
 		}
 
-		return Redirect::route('admin.slides.edit', $id)
+		return Redirect::route('admin.menus.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -145,9 +146,9 @@ class SlidesController extends \admin\BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->slide->find($id)->delete();
+		$this->menu->find($id)->delete();
 
-		return Redirect::route('admin.slides.index');
+		return Redirect::route('admin.menus.index');
 	}
 
 }

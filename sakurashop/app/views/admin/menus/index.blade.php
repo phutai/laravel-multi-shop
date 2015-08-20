@@ -1,17 +1,16 @@
 @extends('admin.layouts.admin')
 
 @section('main')
-
 	<div class="col-md-12">
 		<div class="portlet light">
 			<div class="portlet-title">
 				<div class="caption">
 					<i class="icon-basket font-green-sharp"></i>
-					<span class="caption-subject font-green-sharp bold uppercase">All Slides</span>
+					<span class="caption-subject font-green-sharp bold uppercase">All Menus</span>
 				</div>
 				<div class="actions">
-					<a href="{{URL::route('admin.slides.create')}}" class="btn btn-circle btn-default">
-						<i class="fa fa-plus"></i> Add New Slide
+					<a href="{{URL::route('admin.menus.create')}}" class="btn btn-circle btn-default">
+						<i class="fa fa-plus"></i> Add New Menu
 						<span class="hidden-480"></span>
 					</a>
 				</div>
@@ -24,6 +23,7 @@
 										</span>
 						
 					</div>
+
 					<table class="table table-striped table-bordered table-hover" id="datatable_orders">
 						<thead>
 						<tr role="row" class="heading">
@@ -31,22 +31,22 @@
 								<input type="checkbox" class="group-checkable">
 							</th>
 							<th width="5%">
-								Sliders_id
-							</th>
-							<th width="15%">
 								Title
 							</th>
 							<th width="15%">
-								Description
+								Alias
 							</th>
-							<th width="10%">
-								Image
-							</th>
-							<th width="10%">
+							<th width="15%">
 								Link
+							</th>
+							<th width="15%">
+								Category
 							</th>
 							<th width="10%">
 								Status
+							</th>
+							<th width="10%">
+								Target
 							</th>
 							<th width="10%">
 								Action
@@ -60,7 +60,7 @@
 			</div>
 		</div>
 	</div>
-	<input type="hidden" datatable-url="" value="/admin/slides/loadSlides">
+	<input type="hidden" datatable-url="" value="/admin/menus/loadMenus">
 @stop
 
 @section('scripts')
