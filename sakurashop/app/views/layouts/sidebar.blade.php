@@ -64,7 +64,7 @@
                     class="fa fa-angle-right"></i>{{{$cat->name}}}
                 <?php $child = Category::checkChild($cat->id); ?>
                 @if ($child > 0)
-                    <span style="float:right;font-size:70%">>></span>
+                            <i class="fa fa-angle-double-right" style="float: right"></i>
                 @endif
                 </a>
 
