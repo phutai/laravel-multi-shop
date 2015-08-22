@@ -8,18 +8,18 @@ use \Validator;
 use \Redirect;
 use \DB;
 
-class PromotionsController extends \admin\BaseController {
+class ManufacturersController extends \admin\BaseController {
 
 	/**
-	 * Promotion Repository
+	 * Manufacturer Repository
 	 *
-	 * @var Promotion
+	 * @var Manufacturer
 	 */
-	protected $promotion;
+	protected $manufacturer;
 
-	public function __construct(Promotion $promotion)
+	public function __construct(Manufacturer $manufacturer)
 	{
-		$this->promotion = $promotion;
+		$this->manufacturer = $manufacturer;
 	}
 
 	/**
@@ -29,9 +29,9 @@ class PromotionsController extends \admin\BaseController {
 	 */
 	public function index()
 	{
-		$promotion = $this->promotion->all();
+		$manufacturer = $this->manufacturer->all();
 
-		return View::make('admin.promotions.index', compact('promotions'));
+		return View::make('admin.manufacturers.index', compact('manufacturers'));
 	}
 
 	/**
@@ -39,10 +39,10 @@ class PromotionsController extends \admin\BaseController {
      */
     public function results() {
         
-        $posts = Promotion::select('promotions.id', 'promotions.title', 'promotions.description', 'promotions.image', 'promotions.status');
+        $posts = Manufacturer::select('manufacturers.id', 'manufacturers.title', 'manufacturers.description', 'manufacturers.image', 'manufacturers.status');
         
         return \Bllim\Datatables\Facade\Datatables::of($posts)->add_column('operations', '
-{{ link_to_route("admin.promotions.edit", "Edit", array($id), array("class" => "btn btn-info")) }}
+{{ link_to_route("admin.manufacturers.edit", "Edit", array($id), array("class" => "btn btn-info")) }}
                 ')->edit_column('id', function ($row) {
             return "<input type=\"checkbox\" name=\"id[]\" value=\"{$row->id}\">";
         })->make();
@@ -55,7 +55,7 @@ class PromotionsController extends \admin\BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.promotions.create');
+		return View::make('admin.manufacturers.create');
 	}
 
 	/**
@@ -66,16 +66,16 @@ class PromotionsController extends \admin\BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, Promotion::$rules);
+		$validation = Validator::make($input, Manufacturer::$rules);
 
 		if ($validation->passes())
 		{
-			$this->promotion->create($input);
+			$this->manufacturer->create($input);
 
-			return Redirect::route('admin.promotions.index');
+			return Redirect::route('admin.manufacturers.index');
 		}
 
-		return Redirect::route('admin.promotions.create')
+		return Redirect::route('admin.manufacturers.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -89,9 +89,9 @@ class PromotionsController extends \admin\BaseController {
 	 */
 	public function show($id)
 	{
-		$promotion = $this->promotion->findOrFail($id);
+		$manufacturer = $this->manufacturer->findOrFail($id);
 
-		return View::make('admin.promotions.show', compact('promotion'));
+		return View::make('admin.manufacturers.show', compact('manufacturer'));
 	}
 
 	/**
@@ -102,14 +102,14 @@ class PromotionsController extends \admin\BaseController {
 	 */
 	public function edit($id)
 	{
-		$promotion = $this->promotion->find($id);
+		$manufacturer = $this->manufacturer->find($id);
 
-		if (is_null($promotion))
+		if (is_null($manufacturer))
 		{
-			return Redirect::route('admin.promotions.index');
+			return Redirect::route('admin.manufacturers.index');
 		}
 
-		return View::make('admin.promotions.edit', compact('promotion'));
+		return View::make('admin.manufacturers.edit', compact('manufacturer'));
 	}
 
 	/**
@@ -121,17 +121,17 @@ class PromotionsController extends \admin\BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Promotion::$rules);
+		$validation = Validator::make($input, Manufacturer::$rules);
 
 		if ($validation->passes())
 		{
-			$promotion = $this->promotion->find($id);
-			$promotion->update($input);
+			$manufacturer = $this->manufacturer->find($id);
+			$manufacturer->update($input);
 
-			return Redirect::route('admin.promotions.index', $id);
+			return Redirect::route('admin.manufacturers.index', $id);
 		}
 
-		return Redirect::route('admin.promotions.edit', $id)
+		return Redirect::route('admin.manufacturers.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -145,9 +145,9 @@ class PromotionsController extends \admin\BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->promotion->find($id)->delete();
+		$this->manufacturer->find($id)->delete();
 
-		return Redirect::route('admin.promotions.index');
+		return Redirect::route('admin.manufacturers.index');
 	}
 
 }

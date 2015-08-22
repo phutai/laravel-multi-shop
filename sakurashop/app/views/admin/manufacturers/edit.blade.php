@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-2">
-        <h1>Edit Promotion</h1>
+        <h1>Edit Manufacturer</h1>
 
         @if ($errors->any())
         	<div class="alert alert-danger">
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-{{ Form::model($promotion, array('class' => 'form-horizontal', 'method' => 'PATCH', 'route' => array('admin.promotions.update', $promotion->id))) }}
+{{ Form::model($manufacturer, array('class' => 'form-horizontal', 'method' => 'PATCH', 'route' => array('admin.manufacturers.update', $manufacturer->id))) }}
 
         <div class="form-group">
             {{ Form::label('title', 'Title:', array('class'=>'col-md-2 control-label')) }}
@@ -52,7 +52,7 @@
     <label class="col-sm-2 control-label">&nbsp;</label>
     <div class="col-sm-10">
       {{ Form::submit('Update', array('class' => 'btn btn-lg btn-primary')) }}
-      {{ link_to_route('admin.promotions.index', 'Cancel', $promotion->id, array('class' => 'btn btn-lg btn-default')) }}
+      {{ link_to_route('admin.manufacturers.index', 'Cancel', $manufacturer->id, array('class' => 'btn btn-lg btn-default')) }}
     </div>
 </div>
 

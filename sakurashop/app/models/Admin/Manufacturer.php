@@ -1,7 +1,7 @@
 <?php
 namespace admin;
 
-class Promotion extends \Eloquent {
+class Manufacturer extends \Eloquent {
 	protected $guarded = array();
 
 	public static $rules = array(

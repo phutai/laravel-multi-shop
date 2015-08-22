@@ -6,11 +6,11 @@
 			<div class="portlet-title">
 				<div class="caption">
 					<i class="icon-basket font-green-sharp"></i>
-					<span class="caption-subject font-green-sharp bold uppercase">All Promotions</span>
+					<span class="caption-subject font-green-sharp bold uppercase">All Manufacturers</span>
 				</div>
 				<div class="actions">
-					<a href="{{URL::route('admin.promotions.create')}}" class="btn btn-circle btn-default">
-						<i class="fa fa-plus"></i> Add New Promotion
+					<a href="{{URL::route('admin.manufacturers.create')}}" class="btn btn-circle btn-default">
+						<i class="fa fa-plus"></i> Add New Manufacturer
 						<span class="hidden-480"></span>
 					</a>
 				</div>
@@ -54,7 +54,7 @@
 			</div>
 		</div>
 	</div>
-	<input type="hidden" datatable-url="" value="/admin/promotions/loadPromotions">
+	<input type="hidden" datatable-url="" value="/admin/manufacturers/loadManufacturers">
 @stop
 
 @section('scripts')

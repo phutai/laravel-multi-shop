@@ -45,7 +45,7 @@ class ProductsController extends \admin\BaseController
             }
         }
 
-        $posts = Product::select(array('products.id', 'products.id', 'products.image', 'products.model', 'products.name', 'products.special_price', 'products.sale_price', 'products.created_at'));
+        $posts = Product::select(array('products.id', 'products.id', 'products.image', 'products.model', 'products.name', 'products.special_price', 'products.sale_price', 'products.manufacturer_id', 'products.created_at'));
 
 
         return \Bllim\Datatables\Facade\Datatables::of($posts)

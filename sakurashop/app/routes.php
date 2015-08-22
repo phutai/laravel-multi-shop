@@ -36,12 +36,12 @@ Route::group(array('prefix' => 'admin', 'before'=>'admin'), function () {
     Route::resource('slides', 'admin\SlidesController');
     Route::resource('posts', 'admin\PostsController');
     Route::resource('menus', 'admin\MenusController');
-    Route::resource('promotions', 'admin\PromotionsController');
+    Route::resource('manufacturers', 'admin\ManufacturersController');
     Route::post('/sliders/loadSliders', 'admin\SlidersController@results');
     Route::post('/slides/loadSlides', 'admin\SlidesController@results');
     Route::post('/posts/loadPosts', 'admin\PostsController@results');
     Route::post('/menus/loadMenus', 'admin\MenusController@results');
-    Route::post('/promotions/loadPromotions', 'admin\PromotionsController@results');
+    Route::post('/manufacturers/loadManufacturers', 'admin\ManufacturersController@results');
 });
 
 Route::group(array('prefix' => 'admin', 'before'=>'baseadmin'), function () {
@@ -73,5 +73,6 @@ Route::get('/danh-muc/{alias?}', array('uses' => 'CategoriesController@show'))->
 //Route::get('/tim-kiem/{alias?}', array('uses' => 'SearchController@search'))->where('alias', '.*');
 Route::get('/san-pham/{alias?}', array('uses' => 'ProductsController@show'))->where('alias', '.*');
 Route::get('/posts/{alias?}', array('uses' => 'PostsController@show'))->where('alias', '.*');
+Route::get('/manufacturer/{alias?}', array('uses' => 'ManufacturersController@show'))->where('manufacturer_id', '.*');
 
 

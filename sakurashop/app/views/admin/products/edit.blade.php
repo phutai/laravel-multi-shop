@@ -32,6 +32,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    {{ Form::label('manufacturer_id', 'Mã nhà sản xuất:', array('class'=>'col-md-2 control-label')) }}
+                    <div class="col-sm-10">
+                      {{ Form::text('manufacturer_id', Input::old('manufacturer_id'), array('class'=>'form-control', 'placeholder'=>'Mã nhà sản xuất')) }}
+                    </div>
+                </div>
+                <div class="form-group">
                     {{ Form::label('special_price', Lang::get('products.special_price'), array('class'=>'col-md-2 control-label')) }}
                     <div class="col-sm-10">
                         {{ Form::text('special_price', Input::old('special_price'), array('class'=>'form-control', 'placeholder'=>Lang::get('products.special_price'))) }}

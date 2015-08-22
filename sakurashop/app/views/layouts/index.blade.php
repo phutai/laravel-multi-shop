@@ -219,7 +219,7 @@
             </div>
 
             <!-- END SIDEBAR & CONTENT -->
-            @include('layouts.promotions')
+            @include('layouts.manufacturers')
 
         </div>
     </div>

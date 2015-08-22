@@ -51,6 +51,9 @@
                                 Giá lẻ
                             </th>
                             <th>
+                                Nhà sản xuất
+                            </th>
+                            <th>
                                 Ngày tạo
                             </th>
                             <th width="20%">

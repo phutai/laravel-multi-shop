@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-2">
-        <h1>Create Promotion</h1>
+        <h1>Create Manufacturer</h1>
 
         @if ($errors->any())
         	<div class="alert alert-danger">
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-{{ Form::open(array('route' => 'admin.promotions.store', 'class' => 'form-horizontal')) }}
+{{ Form::open(array('route' => 'admin.manufacturers.store', 'class' => 'form-horizontal')) }}
 
         <div class="form-group">
             {{ Form::label('title', 'Title:', array('class'=>'col-md-2 control-label')) }}

@@ -107,9 +107,9 @@
                     Menus</a>
                 </li>  
                 <li>
-                    <a href="{{URL::route('admin.promotions.index')}}">
+                    <a href="{{URL::route('admin.manufacturers.index')}}">
                     <i class="icon-home"></i>
-                    Promotions</a>
+                    Manufacturers</a>
                 </li>         
             @endif
         </ul>
