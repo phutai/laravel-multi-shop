@@ -27,8 +27,8 @@ return array(
 
     "model" => "Model",
     "name" => "Tên sản phẩm",
-    "sale_price" => "Giá lẻ",
-    "special_price" => "Giá sỉ",
+    "sale_price" => "Giá",
+    "special_price" => "Giá khuyến mãi",
     "quantity" => "Số lượng",
     "size" => "Size",
     "material" => "Chất liệu",

@@ -1,4 +1,6 @@
-<div class="col-md-12 sale-product">
+<div class="product-page">
+    <div class="row">
+    <div class="col-md-12 sale-product">
   <h2>Thương hiệu nổi bật</h2>
   <div class="owl-carousel owl-carousel5">
     <?php 
@@ -15,3 +17,5 @@
     @endforeach
   </div>
 </div>
+        </div>
+    </div>
