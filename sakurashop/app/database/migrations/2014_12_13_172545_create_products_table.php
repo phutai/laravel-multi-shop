@@ -32,7 +32,6 @@ class CreateProductsTable extends Migration {
 			$table->text('meta_description');
 			$table->timestamps();
 		});
-		DB::statement('ALTER TABLE `products` ADD `manufacturer_id` INTEGER UNSIGNED NULL;');
 	}
 
 
