@@ -1,0 +1,14 @@
+<?php $__env->startSection('main'); ?>
+	<table style="width:100%">
+		<tr>
+			<td>
+				<span style="font-size: 12px; font-weight: bold;"><?php echo $post->title; ?></span>
+				</br>
+				<span style="font-size: 10px; color: #999999;"><?php echo $post->updated_at; ?></span>
+				<?php echo $post->description; ?>
+
+			</td>
+		</tr>
+	</table>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

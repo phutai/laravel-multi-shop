@@ -1,0 +1,13 @@
+<div class="brands">
+    <div class="container">
+        <div class="owl-carousel owl-carousel6-brands">
+            <?php 
+              $promotions = Promotion::getPromotion();
+            ?>
+
+            <?php foreach($promotions as $key => $value): ?>
+                <a href=""><img src="<?php echo URL::to("/"); ?>/image/promotion/<?php echo $value->image; ?>" alt="<?php echo $value->title; ?>" title="<?php echo $value->title; ?>"></a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>

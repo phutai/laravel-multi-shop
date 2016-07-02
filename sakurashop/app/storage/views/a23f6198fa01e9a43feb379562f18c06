@@ -1,0 +1,25 @@
+<?php $__env->startSection('main'); ?>
+	<?php $meta_title = 'meta-title'; $meta_description = 'meta-description';?>
+	<table style="width:100%">
+		<tr style="border-bottom: 1px solid gray; border-collapse: collapse;">
+			<td><h1>Tin Tức</h1></td>
+		</tr>
+	 	<?php if($posts->count()): ?>
+			<?php foreach($posts as $key => $post): ?>
+				<tr style="border-bottom: 1px solid gray; border-collapse: collapse;">
+					<td style="padding-top: 15px;" colspan="2">
+						<span style="font-size: 12px; font-weight: bold;"><a href="<?php echo URL::to("/"); ?>/posts/<?php echo e($post->alias); ?>" style="color: #3d3d3d;"><?php echo $post->$meta_title; ?></a></span>
+						</br>
+						<span style="font-size: 10px; color: #999999;"><?php echo $post->updated_at; ?></span>
+						<?php echo $post->$meta_description; ?>
+
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		<?php else: ?>
+			Xin lỗi, không thể tìm thấy tin tức.
+		<?php endif; ?>
+	</table>
+	<div style="float:right; margin-top: 5px;"><?php echo $posts->links();; ?></div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

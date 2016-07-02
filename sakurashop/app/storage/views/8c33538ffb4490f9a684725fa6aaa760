@@ -1,0 +1,75 @@
+<?php $__env->startSection('new_arrivals'); ?>
+    <?php echo $__env->make('layouts.elements.newarrivals', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('main'); ?>
+    <div class="product-page">
+        <div class="row">
+            <?php if(count($sellingProducts)): ?>
+                <!-- BEGIN PRODUCT LIST -->
+                <div class="row product-list">
+                    <h4 class="title-main">Sản phẩm bán chạy</h4>
+                    <?php foreach($sellingProducts as $product): ?>
+                        <!-- PRODUCT ITEM START -->
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="product-item">
+                                <a title="<?php echo e($product->name); ?>"
+                                   href="<?php echo URL::to("/"); ?>/san-pham/<?php echo e($product->alias); ?>">
+                                    <div class="pi-img-wrapper">
+                                        <img src="<?php echo URL::to("/images/cache/"); ?>/<?php echo Config::get('configs.thumb_image'); ?>/<?php echo e($product->image); ?>"
+                                             data-src="<?php echo e($product->image); ?>" class="img-responsive"
+                                             alt="<?php echo e($product->name); ?>">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="product-box-info">
+                                        <p class="name-product"><?php echo e(Str::limit($product->name, 32)); ?></p>
+
+                                    </div>
+                                    <div class="pi-price"><?php echo CommonHelper::displaySalePrice($product); ?></div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- PRODUCT ITEM END -->
+                    <?php endforeach; ?>
+                </div>
+                <!-- END PRODUCT LIST -->
+            <?php else: ?>
+                There are no products
+            <?php endif; ?>
+            <?php if($randomProducts->count()): ?>
+                <!-- BEGIN PRODUCT LIST -->
+                <div class="row product-list">
+                    <h4 class="title-main">Sản phẩm random</h4>
+                    <?php foreach($randomProducts as $product): ?>
+                        <!-- PRODUCT ITEM START -->
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="product-item">
+                                <a title="<?php echo e($product->name); ?>"
+                                   href="<?php echo URL::to("/"); ?>/san-pham/<?php echo e($product->alias); ?>">
+                                    <div class="pi-img-wrapper">
+                                        <img src="<?php echo URL::to("/images/cache/"); ?>/<?php echo Config::get('configs.thumb_image'); ?>/<?php echo e($product->image); ?>"
+                                             data-src="<?php echo e($product->image); ?>" class="img-responsive"
+                                             alt="<?php echo e($product->alias); ?>">
+                                    </div>
+                                    <div class="product-box-info">
+                                        <p class="name-product"><?php echo e(Str::limit($product->name, 32)); ?></p>
+
+                                    </div>
+
+
+                                    <div class="pi-price"><?php echo CommonHelper::displaySalePrice($product); ?></div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- PRODUCT ITEM END -->
+                    <?php endforeach; ?>
+                </div>
+                <!-- END PRODUCT LIST -->
+            <?php else: ?>
+                There are no products
+            <?php endif; ?>
+        </div>
+    </div>
+    <!-- END CONTENT -->
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

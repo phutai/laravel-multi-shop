@@ -1,0 +1,53 @@
+<?php /*<?php $__env->startSection('slider_1'); ?>*/ ?>
+    <?php
+    $slider_home = Slide::getSlider('_home');
+    ?>
+    <?php if(count($slider_home)): ?>
+        <!-- BEGIN SLIDER -->
+        <div class="page-slider margin-bottom-35">
+
+            <!-- LayerSlider start -->
+            <div id="layerslider" style="width: 100%; height: 494px; margin: 0 auto;">
+                <?php foreach($slider_home as $sl): ?>
+                    <!-- slide one start -->
+                    <div class="ls-slide ls-slide1"
+                         data-ls="offsetxin: right; slidedelay: 7000; transition2d: 24,25,27,28;">
+
+                        <img src="<?php echo URL::to("/images/slider/"); ?>/<?php echo e($sl->image); ?>" class="ls-bg"
+                             alt="Slide background">
+
+                        <div class="ls-l ls-title" style="top: 96px; left: 35%; white-space: nowrap;" data-ls="
+            fade: true; 
+            fadeout: true; 
+            durationin: 750; 
+            durationout: 750; 
+            easingin: easeOutQuint; 
+            rotatein: 90; 
+            rotateout: -90; 
+            scalein: .5; 
+            scaleout: .5; 
+            showuntil: 4000;
+          "><?php echo $sl->title; ?>
+
+                        </div>
+
+                        <div class="ls-l ls-mini-text" style="top: 338px; left: 35%; white-space: nowrap;" data-ls="
+          fade: true; 
+          fadeout: true; 
+          durationout: 750; 
+          easingin: easeOutQuint; 
+          delayin: 300; 
+          showuntil: 4000;
+          "><?php echo $sl->description; ?>
+
+                        </div>
+                    </div>
+                    <!-- slide one end -->
+                <?php endforeach; ?>
+
+            </div>
+            <!-- LayerSlider end -->
+        </div>
+        <!-- END SLIDER -->
+    <?php endif; ?>
+<?php /*<?php $__env->stopSection(); ?>*/ ?>

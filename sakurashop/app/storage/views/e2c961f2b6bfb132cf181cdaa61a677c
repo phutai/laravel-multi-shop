@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Head BEGIN -->
+<head>
+    <meta charset="utf-8">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <?php echo $__env->make('layouts.meta', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <?php echo $__env->make('layouts.styles', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</head>
+<!-- Head END -->
+<?php $__env->startSection('meta'); ?>
+    <title><?php echo e($shopinfo->shopinfo->store_name); ?></title>
+    <meta content="<?php echo e($shopinfo->shopinfo->meta_title); ?>" name="title">
+    <meta content="<?php echo e($shopinfo->shopinfo->meta_description); ?>" name="description">
+    <meta content=<?php echo e($shopinfo->shopinfo->meta_keywords); ?>"" name="keywords">
+    <?php $__env->stopSection(); ?>
+            <!-- Body BEGIN -->
+    <body class="ecommerce">
+    <!-- BEGIN TOP BAR -->
+    <div class="pre-header gray-background">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN TOP BAR LEFT PART -->
+                <?php if(!isset($isMobile)): ?>
+                    <div class="col-md-6 col-sm-6 additional-shop-info">
+                        <p><b>Chào bạn đến với sakurashopvn !</b></p>
+                    </div>
+
+                    <!-- END TOP BAR LEFT PART -->
+
+                    <!-- BEGIN TOP BAR MENU -->
+                    <div class="col-md-6 col-sm-6 additional-nav">
+                        <ul class="list-unstyled list-inline pull-right">
+                            <?php if(is_null($user_login = CommonHelper::getUserLogin())): ?>
+                                <li><a href="<?php echo URL::to("/login"); ?>"><b>Đăng nhập</b></a></li>
+                                <li><a href="<?php echo URL::to("/user/signup"); ?>"><b>Đăng ký</b></a></li>
+                            <?php else: ?>
+                                <li><a href="#"><b>Xin chào <?php echo e($user_login->profile->first_name); ?></b></a></li>
+                                <li><a href="<?php echo URL::to("/user/logout"); ?>" style="color:#ff0000"><b>Thoát</b></a></li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                    <!-- END TOP BAR MENU -->
+                    <div class="clearfix"></div>
+                <?php else: ?>
+                    <?php if(is_null($authentication->getLoggedUser())): ?>
+                        <div class="col-md-6 col-sm-6 additional-shop-info">
+                            <a href="<?php echo URL::to("/login"); ?>"><b>Đăng nhập</b></a>
+                        </div>
+
+                        <!-- END TOP BAR LEFT PART -->
+                        <!-- BEGIN TOP BAR MENU -->
+                        <div class="col-md-6 col-sm-6 additional-nav" style="text-align: right;">
+                            <a href="<?php echo URL::to("/user/signup"); ?>" style="font-size: 14px"><b>Đăng ký</b></a>
+                        </div>
+                        <div class="clearfix"></div>
+                    <?php else: ?>
+                        <div class="col-md-6 col-sm-6 additional-shop-info">
+                            <a href="#"><b>Xin chào <?php echo e($user_login->profile->first_name); ?></b></a>
+                        </div>
+
+                        <!-- END TOP BAR LEFT PART -->
+                        <!-- BEGIN TOP BAR MENU -->
+                        <div class="col-md-6 col-sm-6 additional-nav" style="text-align: right;">
+                            <a href="<?php echo URL::to("/user/logout"); ?>" style="color:#ff0000"><b>Thoát</b></a>
+                        </div>
+                        <div class="clearfix"></div>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <!-- END TOP BAR -->
+
+    <!-- BEGIN HEADER -->
+    <div class="header g-background">
+        <div class="container">
+
+            <?php if(isset($isMobile) && !isset($isTablet)): ?>
+                <a href="<?php echo URL::to('/'); ?>"><img src="<?php echo URL::to('/image/data/'); ?>/<?php echo $shopinfo->shopinfo->store_mobile; ?>"
+                                                style="height:120px; width:380px" class="img-responsive"
+                                                alt="logo"></a>
+            <?php else: ?>
+                <div class="row">
+                     <div class="col-md-12 col-sm-12">
+                    <a class="site-logo" href="/"><img
+                                src="<?php echo URL::to('/image/data/'); ?>/<?php echo $shopinfo->shopinfo->store_baner; ?>"
+                                alt="SakuraShop.VN"></a>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i><span style=""
+                                                                                               class="mobi-text">Menu</span></a>
+
+            <div class="row nav-bar g-background">
+                <!-- BEGIN CART -->
+                <div class="top-cart-block">
+                    <div class="top-cart-info">
+                        <a href="javascript:void(0);" class="top-cart-info-count"><?php echo e(Cart::totalItems()); ?> sản phẩm</a>
+                        <a href="javascript:void(0);" class="top-cart-info-value"><?php echo e(Cart::total(false)); ?> VNĐ</a>
+                    </div>
+                    <i class="fa fa-shopping-cart"></i>
+
+                    <div class="top-cart-content-wrapper">
+                        <div class="top-cart-content">
+                            <ul data-bind-cart="" class="scroller" style="height: 250px;">
+                                <?php if(count($carts = Cart::contents(true)) > 0): ?>
+                                    <?php foreach($carts as $key => $item): ?>
+                                        <li>
+                                            <a href=""><img class="image-item-cart"
+                                                            src="/images/<?php echo e($item['image']); ?>"
+                                                            alt="" width="37" height="34"></a>
+                                            <span class="cart-content-count">x <?php echo e($item['quantity']); ?></span>
+                                            <strong><a href="" class="data-cart-name"><?php echo e($item['name']); ?></a></strong>
+                                            <em class="data-cart-price"><?php echo e($item['price']); ?></em>
+
+                                            <form method="post" action="/cart/remove">
+                                                <input type="hidden" name="cartid" value="<?php echo $key; ?>">
+                                                <?php echo Form::submit('', array('class' => 'del-goods')); ?>
+
+                                            </form>
+                                        </li>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </ul>
+                            <ul class="hidden" data-clone-item="">
+                                <li>
+                                    <a href=""><img class="image-item-cart"
+                                                    src="../../assets/frontend/pages/img/cart-img.jpg"
+                                                    alt="" width="37" height="34"></a>
+                                    <span class="cart-content-count">x 1</span>
+                                    <strong><a href="" class="data-cart-name"></a></strong>
+                                    <em class="data-cart-price"></em>
+
+                                    <form method="post" action="/cart/remove">
+                                        <input type="hidden" name="cartid" data-cart-id="" value="">
+                                        <?php echo Form::submit('', array('class' => 'del-goods')); ?>
+
+                                    </form>
+                                    <!-- <a href="javascript:void(0);" class="del-goods">&nbsp;</a> -->
+                                </li>
+                            </ul>
+                            <div class="text-right">
+                                <a href="<?php echo URL::to('/cart/view'); ?>" class="btn btn-default">Xem giỏ hàng</a>
+                                <a href="<?php echo URL::to('/orders/create'); ?>" data-btn-checkout="" class="btn btn-primary">Thanh
+                                    toán</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--END CART -->
+
+                <div class="top-cart-block">
+                    <div id="wrapper-top-search">
+                        <form id="top-search" method="get" action="/search/">
+                            <?php /*<input type="submit" class="search" value="">*/ ?>
+                            <input type="submit" class="search" style="float: right;" value="">
+                            <input name="keyword" id="keyword" type="text" class="text" value="" size="18">
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- BEGIN NAVIGATION -->
+                <div class="header-navigation">
+                    <ul>
+                        <?php foreach(Menu::all() as $menu): ?>
+                            <?php if($menu->target == 'public' || ($menu->target == 'private' && !is_null($authentication->getLoggedUser()))): ?>
+                                <li><a href="<?php echo e(URL::to($menu->link)); ?>"><?php echo e($menu->title); ?></a></li>
+                                <?php endif; ?>
+                                <?php endforeach; ?>
+                                        <!-- BEGIN TOP SEARCH -->
+                                <!-- END TOP SEARCH -->
+                                <?php if(isset($isMobile) && !isset($isTablet)): ?>
+                                    <?php $categories = admin\Category::loadCategories() ?>
+                                    <?php foreach($categories as $cat): ?>
+                                        <li class="list-group-item clearfix
+                                        <?php if(isset($category) && $cat->id == $category->id): ?>
+                                        active
+                                        <?php endif; ?>
+                                                ">
+                                            <a href="<?php echo URL::to("/"); ?>/danh-muc/<?php echo e($cat->alias); ?>">
+                                                <i class="fa fa-angle-right"></i><?php echo e($cat->name); ?>
+
+                                                (<?php echo CommonHelper::countCategory($cat->id); ?>)
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                    </ul>
+                </div>
+                <!-- END NAVIGATION -->
+            </div>
+        </div>
+        <!-- Header END -->
+    </div>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+    <br/><br/>
+
+    <?php echo $__env->make('layouts.elements.slider1', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php /*<?php echo $__env->yieldContent('slider_1'); ?>*/ ?>
+    <!-- Header END -->
+    <div class="main g-background">
+        <div class="container  body-panel">
+            <?php echo $__env->yieldContent('breadcrumb'); ?>
+            <!-- BEGIN SLIDER -->
+
+            <!-- BEGIN SIDEBAR & CONTENT -->
+            <div class="row margin-bottom-40 ">
+                <?php echo $__env->yieldContent('new_arrivals'); ?>
+
+                <!-- BEGIN SIDEBAR -->
+                <?php echo $__env->make('layouts.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <!-- END SIDEBAR -->
+
+                <!-- BEGIN CONTENT -->
+                <div class="col-md-9 col-sm-8">
+                    <?php echo $__env->yieldContent('main'); ?>
+                </div>
+                <!-- END CONTENT -->
+            </div>
+            <div class="clearfix"></div>
+            <br/>
+            <?php echo $__env->make('layouts.manufacturers', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+        </div>
+    </div>
+    <?php if((isset($isMobile) && !isset($isTablet)) == true): ?>
+        <div class="sidebar list-group-item">
+            <h4 class="title-main">Thanh toán</h4>
+            <?php echo $shopinfo->shopinfo->store_payment ?>
+        </div>
+        <?php endif; ?>
+                <!-- BEGIN PRE-FOOTER -->
+        <div class="pre-footer pre-footer-light g-background">
+            <div class="container">
+                <div class="row">
+                    <!-- BEGIN ABOUT -->
+                    <div class="col-md-6 col-sm-6">
+                        <div class="footer-about">
+                            <div class="text">
+                                <?php echo e($shopinfo->shopinfo->store_address); ?>
+
+                                <div class="contact">
+                                    <div class="phone"><b>Tel:</b> <?php echo e($shopinfo->shopinfo->store_tel); ?></div>
+                                    <div class="fax"></div>
+                                    <div class="email"></div>
+                                    <div class="email"></div>
+                                </div>
+                                <div id="powered">Copyright by <?php echo e($shopinfo->shopinfo->store_name); ?> ©
+                                    2015
+                                </div>
+                                <br/>
+                                <br/>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END ABOUT -->
+                    <?php if(!empty($shopinfo->shopinfo->store_map)): ?>
+                        <?php if((isset($isMobile) && !isset($isTablet)) == false): ?>
+                            <!-- BEGIN MAP -->
+                            <div class="col-md-6 col-sm-4 col-xs-12 no-padding-right">
+                                <div class="pre-footer-subscribe-box pull-right">
+                                    <img class="col-md-12 col-sm-12 col-xs-12" src="<?php echo URL::to('/image/data'); ?>/<?php echo $shopinfo->shopinfo->store_map; ?>">
+                                </div>
+                            </div>
+                            <!-- END MAP -->
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <!-- END PRE-FOOTER -->
+
+
+        <!-- Load javascripts at bottom, this will reduce page load time -->
+        <?php echo $__env->make('layouts.scripts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php echo $shopinfo->shopinfo->store_zopim; ?>
+        <!-- END PAGE LEVEL JAVASCRIPTS -->
+    </body>
+    <!-- END BODY -->
+</html>

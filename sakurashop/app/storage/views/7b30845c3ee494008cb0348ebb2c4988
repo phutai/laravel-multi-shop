@@ -1,0 +1,30 @@
+<!-- BEGIN SALE PRODUCT -->
+<div class="col-md-12 sale-product">
+    <h2>Sản phảm mới về</h2>
+
+    <div class="owl-carousel owl-carousel6-brands">
+        <?php $newProduct = \admin\Product::newProduct();
+        ?>
+        <?php if(count($newProduct)): ?>
+            <?php foreach($newProduct as $k => $pr): ?>
+                <div>
+                    <div class="product-item">
+                        <div class="pi-img-wrapper">
+                            <img src="<?php echo URL::to("/images/cache/"); ?>/<?php echo Config::get('configs.thumb_image'); ?>/<?php echo e($pr['image']); ?>"
+                                 class="img-responsive">
+                        </div>
+                        <h3><a title="<?php echo e($pr['name']); ?>" href="<?php echo URL::to("/"); ?>/san-pham/<?php echo e($pr['alias']); ?>">
+                                <?php echo e(Str::limit($pr['name'], 32)); ?>
+
+
+                            </a></h3>
+
+                        <div class="pi-price"><?php echo CommonHelper::displaySalePriceArray($pr); ?></div>
+                        <div class="sticker sticker-new"></div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</div>
+<!-- END SALE PRODUCT & NEW ARRIVALS -->

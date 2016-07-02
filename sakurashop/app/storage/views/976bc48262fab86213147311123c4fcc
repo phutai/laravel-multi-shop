@@ -1,0 +1,95 @@
+<?php $__env->startSection('main'); ?>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-2">
+            <h1>Create Slide</h1>
+
+            <?php if($errors->any()): ?>
+                <div class="alert alert-danger">
+                    <ul>
+                        <?php echo implode('', $errors->all('<li class="error">:message</li>')); ?>
+
+                    </ul>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <?php $sliders = DB::table('sliders')
+            ->select(DB::raw('id, name'))
+            ->get(); ?>
+
+    <?php echo Form::open(array('route' => 'admin.slides.store', 'files'=>true, 'class' => 'form-horizontal')); ?>
+
+
+    <div class="form-group">
+        <?php echo Form::label('sliders_id', 'Sliders_id:', array('class'=>'col-md-2 control-label')); ?>
+
+        <div class="col-sm-10">
+            <?php echo Form::text('sliders_id', Input::old('sliders_id'), array('class'=>'form-control', 'placeholder'=>'Sliders_id')); ?>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <?php echo Form::label('title', 'Title:', array('class'=>'col-md-2 control-label')); ?>
+
+        <div class="col-sm-10">
+            <?php echo Form::text('title', Input::old('title'), array('class'=>'form-control', 'placeholder'=>'Title')); ?>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <?php echo Form::label('description', 'Description:', array('class'=>'col-md-2 control-label')); ?>
+
+        <div class="col-sm-10">
+            <?php echo Form::textarea('description', Input::old('description'), array('class'=>'form-control', 'placeholder'=>'Description')); ?>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="exampleInputFile1">Image:</label>
+
+        <div class="col-sm-10">
+            <input type="file" name="image" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <?php echo Form::label('link', 'Link:', array('class'=>'col-md-2 control-label')); ?>
+
+        <div class="col-sm-10">
+            <?php echo Form::text('link', Input::old('link'), array('class'=>'form-control', 'placeholder'=>'Link')); ?>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <?php echo Form::label('status', 'Status:', array('class'=>'col-md-2 control-label')); ?>
+
+        <div class="col-sm-10">
+            <?php echo Form::checkbox('status'); ?>
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">&nbsp;</label>
+
+        <div class="col-sm-10">
+            <?php echo Form::submit('Create', array('class' => 'btn btn-lg btn-primary')); ?>
+
+        </div>
+    </div>
+
+    <?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('admin.layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

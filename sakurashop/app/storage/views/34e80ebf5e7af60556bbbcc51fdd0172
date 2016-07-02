@@ -1,0 +1,44 @@
+<?php $__env->startSection('main'); ?>
+
+<h1>Show Post</h1>
+
+<p><?php echo link_to_route('admin.posts.index', 'Return to All posts', null, array('class'=>'btn btn-lg btn-primary')); ?></p>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Title</th>
+				<th>Description</th>
+				<th>Alias</th>
+				<th>Meta-title</th>
+				<th>Meta-description</th>
+				<th>Status</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<?php $meta_title = 'meta-title'; $meta_description = 'meta-description'; ?>
+			<td><?php echo e($post->title); ?></td>
+			<td><?php echo e($post->description); ?></td>
+			<td><?php echo e($post->alias); ?></td>
+			<td><?php echo e($post->$meta_title); ?></td>
+			<td><?php echo e($post->$meta_description); ?></td>
+			<td><?php echo e($post->status); ?></td>
+            <td>
+                <?php echo Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'route' => array('admin.posts.destroy', $post->id))); ?>
+
+                    <?php echo Form::submit('Delete', array('class' => 'btn btn-danger')); ?>
+
+                <?php echo Form::close(); ?>
+
+                <?php echo link_to_route('admin.posts.edit', 'Edit', array($post->id), array('class' => 'btn btn-info')); ?>
+
+            </td>
+		</tr>
+	</tbody>
+</table>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

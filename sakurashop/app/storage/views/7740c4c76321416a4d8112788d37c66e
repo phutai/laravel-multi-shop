@@ -1,0 +1,92 @@
+
+<?php $__env->startSection('meta'); ?>
+    <title>Giỏ hàng</title>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('main'); ?>
+    <?php if(!empty($carts)): ?>
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                <div class="goods-page">
+                    <div class="goods-data clearfix">
+                        <div class="table-wrapper-responsive">
+                            <table summary="Shopping cart">
+                                <tr>
+                                    <th class="goods-page-image">Ảnh</th>
+                                    <th class="goods-page-description">Mô tả</th>
+                                    <th class="goods-page-quantity">Số lượng</th>
+                                    <th class="goods-page-price">Đơn giá</th>
+                                    <th class="goods-page-total" colspan="2">Tổng</th>
+                                </tr>
+                                <?php foreach($carts as $key => $cart): ?>
+                                    <tr>
+                                        <td class="goods-page-image">
+                                            <a href="#"><img src="<?php echo URL::to('/images/'); ?>/<?php echo $cart['image']; ?>"
+                                                             alt="<?php echo $cart['name']; ?>"></a>
+                                        </td>
+                                        <td class="goods-page-description">
+                                            <h3><a href="#"><?php echo e($cart['name']); ?></a></h3>
+
+                                            <p><?php if(!empty($cart['options'])): ?> <?php foreach($cart['options'] as $opt): ?><?php echo $opt; ?><br/> <?php endforeach; ?> <?php endif; ?></p>
+                                        </td>
+                                        <td class="goods-page-quantity">
+                                            <div class="product-quantity">
+                                                <?php /*<input id="product-quantity" type="text" value="<?php echo e($cart['quantity']); ?>"*/ ?>
+                                                       <?php /*readonly class="form-control input-sm">*/ ?>
+                                                <?php echo e($cart['quantity']); ?>
+
+                                            </div>
+                                        </td>
+                                        <td class="goods-page-price">
+                                            <strong><?php echo e(CommonHelper::format_money($cart['price'])); ?></strong>
+                                        </td>
+                                        <td class="goods-page-total">
+                                            <strong><?php echo e(CommonHelper::format_money($cart['quantity'] * $cart['price'])); ?></strong>
+                                        </td>
+                                        <td class="del-goods-col">
+                                            <form method="post" action="/cart/remove">
+                                                <input type="hidden" name="cartid" value="<?php echo $key; ?>">
+                                                <?php echo Form::submit('', array('class' => 'del-goods')); ?>
+
+                                            </form>
+                                            <?php /*<a class="del-goods" " href="#">&nbsp;</a>*/ ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </table>
+                        </div>
+
+                        <div class="shopping-total">
+                            <ul>
+                                <li>
+                                    <em>Tổng số lượng</em>
+                                    <strong class="price"><?php echo e(Cart::totalItems()); ?></strong>
+                                </li>
+                                <li>
+                                    <em>Thành tiền</em>
+                                    <strong class="price"><?php echo e(CommonHelper::format_money(Cart::total(false))); ?></strong>
+                                </li>
+                                <li>
+                                    <em>Chi phí vận chuyển</em>
+                                    <strong class="price"><span>Chưa có</span></strong>
+                                </li>
+                                <li class="shopping-total-price">
+                                    <em>Tổng cộng</em>
+                                    <strong class="price"><?php echo e(CommonHelper::format_money(Cart::total(false))); ?></strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="btn btn-default" type="submit">Tiếp tục mua hàng <i class="fa fa-shopping-cart"></i>
+                    </button>
+                    <a class="btn btn-primary" href="<?php echo URL::to('/orders/create'); ?>">Thanh toán <i class="fa fa-check"></i></a>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+    <?php else: ?>
+    Không có sản phẩm trong giỏ hàng
+    <?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

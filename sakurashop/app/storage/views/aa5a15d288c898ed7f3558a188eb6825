@@ -1,0 +1,69 @@
+<?php
+$shopinfo = CommonHelper::getInfo();
+if(CommonHelper::isMobile()) $isMobile = true;
+if(CommonHelper::isTablet()) $isTablet = true;
+?>
+
+
+<?php $__env->startSection('title'); ?>
+User login
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('main'); ?>
+<div class="row centered-form">
+    <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title bariol-thin"><?php echo e(Lang::get('common.login')); ?></h3>
+            </div>
+            <?php $message = Session::get('message'); ?>
+            <?php if( isset($message) ): ?>
+            <div class="alert alert-success"><?php echo $message; ?></div>
+            <?php endif; ?>
+            <?php if($errors && ! $errors->isEmpty() ): ?>
+            <?php foreach($errors->all() as $error): ?>
+            <div class="alert alert-danger"><?php echo $error; ?></div>
+            <?php endforeach; ?>
+            <?php endif; ?>
+            <div class="panel-body">
+                <?php echo Form::open(array('url' => URL::action("Jacopo\Authentication\Controllers\AuthController@postClientLogin"), 'method' => 'post') ); ?>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <?php echo Form::email('email', '', ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'Địa chỉ Email', 'required', 'autocomplete' => 'off']); ?>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                <?php echo Form::password('password', ['id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password', 'required', 'autocomplete' => 'off']); ?>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php echo Form::label('remember','Ghi nhớ'); ?>
+
+                <?php echo Form::checkbox('remember'); ?>
+
+                <input type="submit" value="<?php echo e(Lang::get('common.login')); ?>" class="btn btn-info btn-block">
+                <?php echo Form::close(); ?>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
+        <a href="<?php echo URL::action('Jacopo\Authentication\Controllers\UserController@signup'); ?>"><i class="fa fa-sign-in"></i> Đăng kí</a>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

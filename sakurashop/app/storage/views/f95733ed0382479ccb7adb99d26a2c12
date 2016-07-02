@@ -1,0 +1,73 @@
+<?php $__env->startSection('main'); ?>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-2">
+        <h1>Create Slider</h1>
+
+        <?php if($errors->any()): ?>
+        	<div class="alert alert-danger">
+        	    <ul>
+                    <?php echo implode('', $errors->all('<li class="error">:message</li>')); ?>
+
+                </ul>
+        	</div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<?php echo Form::open(array('route' => 'admin.sliders.store', 'class' => 'form-horizontal')); ?>
+
+
+        <div class="form-group">
+            <?php echo Form::label('name', 'Name:', array('class'=>'col-md-2 control-label')); ?>
+
+            <div class="col-sm-10">
+              <?php echo Form::text('name', Input::old('name'), array('class'=>'form-control', 'placeholder'=>'Name')); ?>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('position', 'Position:', array('class'=>'col-md-2 control-label')); ?>
+
+            <div class="col-sm-10">
+              <?php echo Form::text('positison', Input::old('positison'), array('class'=>'form-control', 'placeholder'=>'Position')); ?>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('type', 'Type:', array('class'=>'col-md-2 control-label')); ?>
+
+            <div class="col-sm-10">
+              <?php echo Form::text('type', Input::old('type'), array('class'=>'form-control', 'placeholder'=>'Type')); ?>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('status', 'Status:', array('class'=>'col-md-2 control-label')); ?>
+
+            <div class="col-sm-10">
+              <?php echo Form::checkbox('status'); ?>
+
+            </div>
+        </div>
+
+
+<div class="form-group">
+    <label class="col-sm-2 control-label">&nbsp;</label>
+    <div class="col-sm-10">
+      <?php echo Form::submit('Create', array('class' => 'btn btn-lg btn-primary')); ?>
+
+    </div>
+</div>
+
+<?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('admin.layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,42 @@
+
+<?php $__env->startSection('main'); ?>
+    <?php if($products->count()): ?>
+        <div class="product-page">
+            <div class="row">
+            <div class="row product-list">
+                <!-- BEGIN PRODUCT LIST -->
+                    <!-- PRODUCT ITEM START -->
+                    <?php foreach($products as $product): ?>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="product-item gray-background">
+                                <a title="<?php echo e($product->name); ?>"
+                                   href="<?php echo URL::to("/"); ?>/san-pham/<?php echo e($product->alias); ?>">
+                                    <div class="pi-img-wrapper">
+                                        <img src="<?php echo URL::to("/images/cache/"); ?>/<?php echo Config::get('configs.thumb_image'); ?>/<?php echo e($product->image); ?>"
+                                             data-src="<?php echo e($product->image); ?>" class="img-responsive"
+                                             alt="Berry Lace Dress">
+                                    </div>
+                                    <div class="product-box-info">
+                                        <p class="name-product">Tên : <?php echo e(Str::limit($product->name, 32)); ?></p>
+
+                                    </div>
+                                    <div class="pi-price"><?php echo CommonHelper::displaySalePrice($product); ?></div>
+                                </a>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                                <!-- PRODUCT ITEM END -->
+                </div>
+                <?php echo $products->links(); ?>
+            </div>
+        </div>
+        <?php /*</div>*/ ?>
+        <!-- END PRODUCT LIST -->
+    <?php else: ?>
+        Xin lỗi, không thể tìm thấy sản phẩm.
+        <?php endif; ?>
+                <!-- END CONTENT -->
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('layouts.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

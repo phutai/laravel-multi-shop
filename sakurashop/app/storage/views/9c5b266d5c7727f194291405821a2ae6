@@ -1,0 +1,7 @@
+
+
+    <title><?php echo e($shopinfo->shopinfo->store_name); ?></title>
+    <meta content="<?php echo e($shopinfo->shopinfo->meta_title); ?>" name="title">
+    <meta content="<?php echo e($shopinfo->shopinfo->meta_description); ?>" name="description">
+    <meta content=<?php echo e($shopinfo->shopinfo->keywords); ?>"" name="keywords">
+    <?php echo $__env->yieldContent('meta'); ?>

@@ -1,0 +1,18 @@
+
+
+<?php $__env->startSection('main'); ?>
+    <div class="product-page">
+        <div class="row">
+      
+        <div class="row product-list">
+            <h4 class="title-main">Giới thiệu shop</h4>
+                <?php echo $about; ?>
+
+            </div>
+            <!-- END PRODUCT LIST -->       
+</div>
+</div>
+    <!-- END CONTENT -->
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

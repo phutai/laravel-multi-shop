@@ -1,0 +1,12 @@
+<?php $__env->startSection('main'); ?>
+    <h1>Import Data</h1>
+    <?php echo Form::open(array('action' => array('CategoriesController@importData'))); ?>
+
+    	<?php echo Form::text('pathFile', 'path file json'); ?>
+
+    	<?php echo Form::submit('Register'); ?>
+
+    <?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,7 @@
+<ul class="nav nav-sidebar">
+<?php if(isset($sidebar_items) && $sidebar_items): ?>
+<?php foreach($sidebar_items as $name => $data): ?>
+    <li class="<?php echo Jacopo\Library\Views\Helper::get_active($data['url']); ?>"><a href="<?php echo $data['url']; ?>"><?php echo $data['icon']; ?> <?php echo $name; ?></a></li>
+<?php endforeach; ?>
+<?php endif; ?>
+</ul>
